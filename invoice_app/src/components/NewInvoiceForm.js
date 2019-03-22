@@ -24,15 +24,17 @@ class NewInvoiceForm extends Component {
             [e.target.name]: e.target.value
         })
     }
-    handleSubmit(e) => {
+    handleSubmit(e) {
         e.preventDefault();
-        this.props.addInvoice(this.state);
-        this.setState({
-            business: '', 
-            invoiceNumber: '', 
-            shipper: '', 
-            consignee: ''
-        })
+
+        const invoice = {
+            business: this.state.business, 
+            invoiceNumber: this.state.invoiceNumber, 
+            shipper: this.state.shipper, 
+            consignee: this.state.consignee
+        };
+        this.props.createInvoice(invoice)
+        
     }
 
 
@@ -45,7 +47,7 @@ class NewInvoiceForm extends Component {
                     <Col md={8}>
                         <FormGroup>
                             <Label for="Business">Business</Label>
-                            <Input onChange={e => this.handleChange(e)} type="select" value={this.state.Business} name="Business" id="Business" placeholder="with a placeholder" >
+                            <Input onChange={this.handleChange} type="select" value={this.state.Business} name="business" id="Business" placeholder="with a placeholder" >
                                <option>JJ Cortes Trucking</option>
                                <option>Cindy Trucking</option>
                                
@@ -55,15 +57,15 @@ class NewInvoiceForm extends Component {
                     <Col md={4}>
                         <FormGroup>
                             <Label for="date">Date</Label>
-                            <Input onChange={e => this.handleChange(e)} type="date" value={this.state.Date} name="date" id="date" placeholder="password placeholder" />
+                            <Input onChange={this.handleChange} type="date" value={this.state.Date} name="date" id="date" placeholder="password placeholder" />
                             <Label for="InvoiceNumber">Invoice No. </Label>
-                            <Input onChange={e => this.handleChange(e)} value={this.state.InvoiceNumber} type="text" name="InvoiceNumber" id="InvoiceNumber" placeholder="Invoice Number" />
+                            <Input onChange={this.handleChange} value={this.state.invoiceNumber} type="text" name="InvoiceNumber" id="InvoiceNumber" placeholder="Invoice Number" />
                         </FormGroup>
                     </Col>
                 </Row>
                 <FormGroup>
                     <Label for="Shipper">Shipper</Label>
-                    <Input onChange={e => this.handleChange(e)} value={this.state.Shipper} type="select" name="Shipper" id="Business" placeholder="Shipper" > // Add New Shipper Button
+                    <Input onChange={this.handleChange} value={this.state.shipper} type="select" name="Shipper" id="Business" placeholder="Shipper" > // Add New Shipper Button
                         <option>ABC Co</option>
                         <option>ABC Co</option>
                         <option>GHI Co</option>
@@ -71,7 +73,7 @@ class NewInvoiceForm extends Component {
                 </FormGroup>
                 <FormGroup>
                     <Label for="Consignee">Consignee</Label>
-                    <Input onChange={e => this.handleChange(e)} value={this.state.Congsignee} type="select" name="Consignee" id="Business" placeholder="Consignee" > // Add New Consignee Button
+                    <Input onChange={this.handleChange} value={this.state.congsignee} type="select" name="Consignee" id="Business" placeholder="Consignee" > // Add New Consignee Button
                         <option>Zyx Co</option>
                         <option>WVUT Co</option>
                         <option>JKL Co</option>
@@ -81,19 +83,19 @@ class NewInvoiceForm extends Component {
                     <Col md={3}>
                         <FormGroup>
                             <Label for="DateShipped">DateShipped</Label>
-                            <Input onChange={e => this.handleChange(e)} type="date" name="DateShipped" id="DateShipped" />
+                            <Input onChange={this.handleChange} type="date" name="DateShipped" id="DateShipped" />
                         </FormGroup>
                     </Col>
                     <Col md={4}>
                         <FormGroup>
                             <Label for="Driver">Driver</Label>
-                            <Input onChange={e => this.handleChange(e)}type="text" name="Driver" id="Driver" />
+                            <Input onChange={this.handleChange}type="text" name="Driver" id="Driver" />
                         </FormGroup>
                     </Col>
                     <Col md={3}>
                         <FormGroup>
                             <Label for="ShippersNumbers">Order #</Label>
-                            <Input onChange={e => this.handleChange(e)} type="text" name="Shippers Numbers" id="ShippersNumbers" placeholder="Shippers Numbers" />
+                            <Input onChange={this.handleChange} type="text" name="Shippers Numbers" id="ShippersNumbers" placeholder="Shippers Numbers" />
                         </FormGroup>
                     </Col>
                 </Row>
@@ -101,25 +103,25 @@ class NewInvoiceForm extends Component {
                     <Col md={6}>
                         <FormGroup>
                             <Label for="Description_Commodity">Description/Commodity</Label>
-                            <Input onChange={e => this.handleChange(e)} type="text" name="Description_Commodity" id="Description_Commodity" />
+                            <Input onChange={this.handleChange} type="text" name="Description_Commodity" id="Description_Commodity" />
                         </FormGroup>
                     </Col>
                     <Col md={2}>
                         <FormGroup>
                             <Label for="Weight_Quantity">Weight/Quantity</Label>
-                            <Input onChange={e => this.handleChange(e)} type="text" name="Weight_Quantity" id="Weight_Quantity" placeholder="Weight"/>
+                            <Input onChange={this.handleChange} type="text" name="Weight_Quantity" id="Weight_Quantity" placeholder="Weight"/>
                         </FormGroup>
                     </Col>
                     <Col md={2}>
                         <FormGroup>
                             <Label for="Rate">Rate</Label>
-                            <Input onChange={e => this.handleChange(e)} type="text" name="Rate" id="Rate" placeholder="Rate" />
+                            <Input onChange={this.handleChange} type="text" name="Rate" id="Rate" placeholder="Rate" />
                         </FormGroup>
                     </Col>
                     <Col md={2}>
                         <FormGroup>
                             <Label for="Charges">Charges</Label>
-                            <Input onChange={e => this.handleChange(e)}type="text" name="Charges" id="Charges" placeholder="Charges" />
+                            <Input onChange={this.handleChange}type="text" name="Charges" id="Charges" placeholder="Charges" />
                         </FormGroup>
                     </Col>
                 </Row>
@@ -131,4 +133,8 @@ class NewInvoiceForm extends Component {
     }
 }
 
-export default NewInvoiceForm;
+PostForm.propTypes = {
+    createInvoice : PropTypes.func.isRequired
+}
+
+export default connect(null, { createInvoice}) (NewInvoiceForm);
