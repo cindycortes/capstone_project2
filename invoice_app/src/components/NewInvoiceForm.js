@@ -133,7 +133,7 @@ class NewInvoiceForm extends Component {
     }
 }
 
-PostForm.propTypes = {
+NewInvoiceForm.propTypes = {
     createInvoice : PropTypes.func.isRequired
 }
 

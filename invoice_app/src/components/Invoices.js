@@ -13,21 +13,29 @@ class Invoices extends Component {
 
 
     render() {
+        const invoiceList = this.props.invoices;
+        if (invoiceList) {
 
-        const invoiceList = this.props.invoices.map(invoice => (
 
-            <tr key={invoice.id}>
-                <td> {invoice.invoiceNumber}</td>
-                <td> {invoice.business}</td>
-                <td> {invoice.shipper}</td>
-                <td>{invoice.consignee}</td>
-                <td>
-                    <Button color="success"> Edit </Button>
+            invoiceList.map(invoice => (
 
-                    {/* <Button color="danger" onClick={() => deleteInvoice(invoice.id)}>Delete</Button> */}
-                </td>
-            </tr>
-        ));
+                <tr key={invoice.id}>
+                    <td> {invoice.invoiceNumber}</td>
+                    <td> {invoice.business}</td>
+                    <td> {invoice.shipper}</td>
+                    <td>{invoice.consignee}</td>
+                    <td>
+                        <Button color="success"> Edit </Button>
+
+                        {/* <Button color="danger" onClick={() => deleteInvoice(invoice.id)}>Delete</Button> */}
+                    </td>
+                </tr>
+            ));
+
+        }
+
+
+
 
         return (
             <div>
@@ -46,7 +54,7 @@ class Invoices extends Component {
                     </thead>
                     <tbody>
 
-                        {invoiceList}
+                        {invoiceList ? invoiceList : null}
                     </tbody>
                 </Table>
 
@@ -57,11 +65,13 @@ class Invoices extends Component {
 
 Invoices.propTypes = {
     fetchInvoices: PropTypes.func.isRequired,
-    invoices: PropTypes.array.isRequired
-}
+    invoices: PropTypes.array.isRequired,
+    newInvoice: PropTypes.object
+};
 
 const mapStateToProps = state => ({
-    invoices: state.invoices.invoices
+    invoices: state.invoices.invoices,
+    newinvoice: state.invoices.invoice
 })
 
 export default connect(mapStateToProps, { fetchInvoices })(Invoices);
