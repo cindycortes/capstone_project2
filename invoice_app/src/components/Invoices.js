@@ -11,31 +11,31 @@ class Invoices extends Component {
         this.props.fetchInvoices();
     }
 
-
     render() {
+
         const invoiceList = this.props.invoices;
+
         if (invoiceList) {
 
+           
+           invoiceList.map(invoice => {
+                return (
 
-            invoiceList.map(invoice => (
+                    <tr key={invoice.id}>
+                        <td> {invoice.invoiceNumber}</td>
+                        <td> {invoice.business.businessName}</td>
+                        <td> {invoice.shipper}</td>
+                        <td>{invoice.consignee}</td>
+                        <td>
+                            <Button color="success"> Edit </Button>
 
-                <tr key={invoice.id}>
-                    <td> {invoice.invoiceNumber}</td>
-                    <td> {invoice.business}</td>
-                    <td> {invoice.shipper}</td>
-                    <td>{invoice.consignee}</td>
-                    <td>
-                        <Button color="success"> Edit </Button>
-
-                        {/* <Button color="danger" onClick={() => deleteInvoice(invoice.id)}>Delete</Button> */}
-                    </td>
-                </tr>
-            ));
+                            {/* <Button color="danger" onClick={() => deleteInvoice(invoice.id)}>Delete</Button> */}
+                        </td>
+                    </tr>
+                )
+            });
 
         }
-
-
-
 
         return (
             <div>

@@ -1,5 +1,6 @@
 import {
     FETCH_INVOICES,
+    FETCHING_INVOICES,
     GET_INVOICE,
     NEW_INVOICE,
     EDIT_INVOICE,
@@ -11,7 +12,7 @@ import {
 const initialState = {
     invoices: [],
     invoice: {}, // single invoice that we add
-    // fetchingInvoices: false, 
+    fetchingInvoices: false, 
     // fetchingInvoicesSuccess: false,
     // fetchingInvoicesError: false
 }
@@ -22,8 +23,14 @@ export default function (state = initialState, action) {
         console.log('reducer')
             return {
                 ...state,
-                invoices: action.payload
+                invoices: action.payload,
+                fetchingInvoices: false
             };
+        case FETCHING_INVOICES:
+            return {
+                ...state,
+                fetchingInvoices: true
+            }    
 
         case GET_INVOICE:
             return {

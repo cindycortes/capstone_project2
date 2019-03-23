@@ -1,5 +1,6 @@
 import {
     FETCH_INVOICES,
+    FETCHING_INVOICES,
     GET_INVOICE,
     NEW_INVOICE,
     EDIT_INVOICE,
@@ -11,15 +12,18 @@ import axios from 'axios';
 
 export const fetchInvoices = () => dispatch => {
     console.log('fetching from action');
+    dispatch({
+        type: FETCHING_INVOICES
+    })
     axios.get(`http://localhost:5000/api/invoices`)
         .then(invoices => {
             console.log(invoices)
             dispatch({
                 type: FETCH_INVOICES,
-                payload: invoices
+                payload: invoices.data
+
             })
         })
-
 }
 
 
@@ -32,7 +36,7 @@ export const getInvoice = id => dispatch => {
                 payload: invoice,
             })
         })
-        
+
 }
 
 export const createInvoice = postData => dispatch => {
@@ -58,7 +62,7 @@ export const editInvoice = id => dispatch => {
                 payload: invoice
             })
         })
-       
+
 
 }
 
@@ -71,5 +75,5 @@ export const deleteInvoice = id => dispatch => {
                 payload: response
             })
         })
-        
+
 }
