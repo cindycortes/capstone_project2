@@ -11,6 +11,12 @@ class Invoices extends Component {
         this.props.fetchInvoices();
     }
 
+    // componentWillReceiveProps(nextProps) {
+    //     if(nextProps.newInvoice) {
+    //         this.props.invoices.unshift(nextProps.newInvoice)
+    //     }
+    // }
+
     render() {
 
         const invoiceList = this.props.invoices;
