@@ -21,27 +21,27 @@ class Invoices extends Component {
 
         const invoiceItems = this.props.invoices;
 
-        if (invoiceItems) {
+        // if (invoiceItems) {
 
-           
-           invoiceItems.map(invoice => {
-                return (
 
-                    <tr key={invoice.id}>
-                        <td> {invoice.invoiceNumber}</td>
-                        <td> {invoice.business.businessName}</td>
-                        <td> {invoice.shipper}</td>
-                        <td>{invoice.consignee}</td>
-                        <td>
-                            <Button color="success"> Edit </Button>
+        //    const listOfInvoices = invoiceItems.map(invoice => {
+        //         return (
 
-                            {/* <Button color="danger" onClick={() => deleteInvoice(invoice.id)}>Delete</Button> */}
-                        </td>
-                    </tr>
-                )
-            });
+        //             <tr key={invoice.id}>
+        //                 <td> {invoice.invoiceNumber}</td>
+        //                 {/* <td> {invoice.business.businessName}</td> */}
+        //                 <td> {invoice.shipper}</td>
+        //                 <td> {invoice.consignee}</td>
+        //                 <td>
+        //                     <Button color="success"> Edit </Button>
 
-        }
+        //                     {/* <Button color="danger" onClick={() => deleteInvoice(invoice.id)}>Delete</Button> */}
+        //                 </td>
+        //             </tr>
+        //         )
+        //     });
+
+        // }
 
         return (
             <div>
@@ -60,7 +60,22 @@ class Invoices extends Component {
                     </thead>
                     <tbody>
 
-                        {invoiceItems ? invoiceItems : null}
+                        {invoiceItems.map(invoice => {
+                            return (
+
+                                <tr key={invoice.id}>
+                                    <td> {invoice.invoiceNumber}</td>
+                                    {/* <td> {invoice.business.businessName}</td> */}
+                                    <td> {invoice.shipper}</td>
+                                    <td> {invoice.consignee}</td>
+                                    <td>
+                                        <Button color="success"> Edit </Button>
+
+                                        {/* <Button color="danger" onClick={() => deleteInvoice(invoice.id)}>Delete</Button> */}
+                                    </td>
+                                </tr>
+                            )
+                        })}
                     </tbody>
                 </Table>
 
@@ -75,12 +90,12 @@ Invoices.propTypes = {
     newInvoice: PropTypes.object
 };
 
-const mapStateToProps = function(state) {
+const mapStateToProps = function (state) {
     return {
-      invoices: state.invoices.invoiceList
-     
+        invoices: state.invoices.invoiceList
+
     }
-  }
-   
+}
+
 
 export default connect(mapStateToProps, { fetchInvoices })(Invoices);
