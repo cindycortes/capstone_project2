@@ -17,31 +17,29 @@ class Invoices extends Component {
     //     }
     // }
 
+    renderList() {
+        return this.props.invoices.map((invoice) => {
+
+            return (
+
+                <tr key={invoice.id}>
+                    <td> {invoice.invoiceNumber}</td>
+                    {/* <td> {invoice.business.businessName}</td> */}
+                    <td> {invoice.shipper}</td>
+                    <td> {invoice.consignee}</td>
+                    <td>
+                        <Button color="success"> Edit </Button>
+
+                        {/* <Button color="danger" onClick={() => deleteInvoice(invoice.id)}>Delete</Button> */}
+                    </td>
+                </tr>
+            )
+        });
+    }
+
+
     render() {
 
-        const invoiceItems = this.props.invoices;
-
-        // if (invoiceItems) {
-
-
-        //    const listOfInvoices = invoiceItems.map(invoice => {
-        //         return (
-
-        //             <tr key={invoice.id}>
-        //                 <td> {invoice.invoiceNumber}</td>
-        //                 {/* <td> {invoice.business.businessName}</td> */}
-        //                 <td> {invoice.shipper}</td>
-        //                 <td> {invoice.consignee}</td>
-        //                 <td>
-        //                     <Button color="success"> Edit </Button>
-
-        //                     {/* <Button color="danger" onClick={() => deleteInvoice(invoice.id)}>Delete</Button> */}
-        //                 </td>
-        //             </tr>
-        //         )
-        //     });
-
-        // }
 
         return (
             <div>
@@ -59,27 +57,12 @@ class Invoices extends Component {
                         </tr>
                     </thead>
                     <tbody>
+                        {this.renderList()}
 
-                        {invoiceItems.map(invoice => {
-                            return (
-
-                                <tr key={invoice.id}>
-                                    <td> {invoice.invoiceNumber}</td>
-                                    {/* <td> {invoice.business.businessName}</td> */}
-                                    <td> {invoice.shipper}</td>
-                                    <td> {invoice.consignee}</td>
-                                    <td>
-                                        <Button color="success"> Edit </Button>
-
-                                        {/* <Button color="danger" onClick={() => deleteInvoice(invoice.id)}>Delete</Button> */}
-                                    </td>
-                                </tr>
-                            )
-                        })}
                     </tbody>
                 </Table>
 
-            </div>
+            </div >
         )
     }
 }
