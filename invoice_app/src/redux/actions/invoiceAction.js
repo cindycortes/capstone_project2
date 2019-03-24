@@ -1,6 +1,7 @@
 import {
-    FETCH_INVOICES,
-    FETCHING_INVOICES,
+    FETCH_INVOICES_SUCCESS,
+    FETCH_INVOICES_PENDING,
+    FETCH_INVOICES_FAILED,
     GET_INVOICE,
     NEW_INVOICE,
     EDIT_INVOICE,
@@ -13,15 +14,21 @@ import axios from 'axios';
 export const fetchInvoices = () => dispatch => {
     console.log('fetching from action');
     dispatch({
-        type: FETCHING_INVOICES
+        type: FETCH_INVOICES_PENDING
     })
     axios.get(`http://localhost:5000/api/invoices`)
-        .then(invoices => {
-            console.log(invoices)
+        .then(invoiceList => {
+            console.log(invoiceList)
             dispatch({
-                type: FETCH_INVOICES,
-                payload: invoices.data
+                type: FETCH_INVOICES_SUCCESS,
+                payload: invoiceList.data
 
+            })
+        })
+        .catch(error => {
+            dispatch({
+                type: FETCH_INVOICES_FAILED,
+                payload: "Error in fetching invoices"
             })
         })
 }

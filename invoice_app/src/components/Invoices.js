@@ -19,12 +19,12 @@ class Invoices extends Component {
 
     render() {
 
-        const invoiceList = this.props.invoices;
+        const invoiceItems = this.props.invoices;
 
-        if (invoiceList) {
+        if (invoiceItems) {
 
            
-           invoiceList.map(invoice => {
+           invoiceItems.map(invoice => {
                 return (
 
                     <tr key={invoice.id}>
@@ -60,7 +60,7 @@ class Invoices extends Component {
                     </thead>
                     <tbody>
 
-                        {invoiceList ? invoiceList : null}
+                        {invoiceItems ? invoiceItems : null}
                     </tbody>
                 </Table>
 
@@ -75,9 +75,12 @@ Invoices.propTypes = {
     newInvoice: PropTypes.object
 };
 
-const mapStateToProps = state => ({
-    invoices: state.invoices.invoices,
-    newinvoice: state.invoices.invoice
-})
+const mapStateToProps = function(state) {
+    return {
+      invoices: state.invoices.invoiceList
+     
+    }
+  }
+   
 
 export default connect(mapStateToProps, { fetchInvoices })(Invoices);

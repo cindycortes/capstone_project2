@@ -1,36 +1,41 @@
 import {
-    FETCH_INVOICES,
-    FETCHING_INVOICES,
+    FETCH_INVOICES_SUCCESS,
+    FETCH_INVOICES_PENDING,
+    FETCH_INVOICES_FAILED,
     GET_INVOICE,
     NEW_INVOICE,
     EDIT_INVOICE,
     DELETE_INVOICE
- 
+
 } from '../actions/types';
 
 
 const initialState = {
-    invoices: [],
+    invoiceList: [],
     invoice: {}, // single invoice that we add
-    fetchingInvoices: false, 
-    // fetchingInvoicesSuccess: false,
-    // fetchingInvoicesError: false
+    fetchingInvoices: false,
+   
 }
 
 export default function (state = initialState, action) {
     switch (action.type) {
-        case FETCH_INVOICES:
-        console.log('reducer')
+        case FETCH_INVOICES_SUCCESS:
+            console.log('reducer')
             return {
                 ...state,
-                invoices: action.payload,
+                invoiceList: action.payload,
                 fetchingInvoices: false
             };
-        case FETCHING_INVOICES:
+        case FETCH_INVOICES_PENDING:
             return {
                 ...state,
                 fetchingInvoices: true
-            }    
+            }
+        case FETCH_INVOICES_FAILED:
+            return {
+                ...state,
+                fetchingInvoices: true
+            }
 
         case GET_INVOICE:
             return {
@@ -48,10 +53,10 @@ export default function (state = initialState, action) {
             return {
                 ...state
             }
-        case DELETE_INVOICE: 
+        case DELETE_INVOICE:
             return {
                 ...state
-            }    
+            }
 
 
         default:
