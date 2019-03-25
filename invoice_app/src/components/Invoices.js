@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import EditInvoice from './EditInvoice';
+import SingleInvoice from './SingleInvoice';
 import { Button, ListGroup, ListGroupItem, Table, Container, Row, Col } from 'reactstrap'
 import { connect } from 'react-redux';
 import { fetchInvoices, selectInvoice } from '../redux/actions/invoiceAction';
@@ -17,9 +17,6 @@ class Invoices extends Component {
     //     }
     // }
 
-    handleClick () {
-        console.log(this.props.invoiceSelected);
-    }
 
     renderList() {
         return this.props.invoices.map((invoice) => {
@@ -32,7 +29,7 @@ class Invoices extends Component {
                     <td> {invoice.shipper}</td>
                     <td> {invoice.consignee}</td>
                     <td>
-                        <Button color="success" onClick={() => this.handleClick}> Select </Button>
+                        <Button color="success" onClick={() => this.props.selectInvoice(invoice)}> Select </Button>
                         {/* <Button color="danger">Delete</Button> */}
                     </td>
 
@@ -41,6 +38,8 @@ class Invoices extends Component {
             )
         });
     }
+
+    
 
     render() {
 
@@ -72,8 +71,8 @@ class Invoices extends Component {
                     </Col>
 
                     <Col xs="6">
-                        <h2>Invoice View</h2>
-                        {this.}
+                        <SingleInvoice />
+
 
                     </Col>
                 </Row>
@@ -97,5 +96,11 @@ const mapStateToProps = function (state) {
     }
 }
 
+const matchDispatchToProps= function (dispatch) {
+    return {
+        selectInvoice: selectInvoice
+    }
+}
 
-export default connect(mapStateToProps, { fetchInvoices, selectInvoice })(Invoices);
+
+export default connect(mapStateToProps, matchDispatchToProps, { fetchInvoices, selectInvoice })(Invoices);

@@ -2,7 +2,7 @@ import {
     FETCH_INVOICES_SUCCESS,
     FETCH_INVOICES_PENDING,
     FETCH_INVOICES_FAILED,
-    SELECT_INVOICE,
+    INVOICE_SELECTED,
     NEW_INVOICE,
     EDIT_INVOICE,
     DELETE_INVOICE
@@ -37,10 +37,10 @@ export const fetchInvoices = () => dispatch => {
 export const selectInvoice = id => dispatch => {
     console.log("you clicked on invoice:", id)
     axios.get(`http://localhost:5000/api/invoices/${id}`)
-        .then(invoice => {
+        .then(invoiceItem => {
             dispatch({
-                type: SELECT_INVOICE,
-                payload: invoice,
+                type: INVOICE_SELECTED,
+                payload: invoiceItem.data
             })
         })
         .catch(err => {
