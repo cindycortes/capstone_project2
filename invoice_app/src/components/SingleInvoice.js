@@ -19,4 +19,10 @@ class SingleInvoice extends Component {
     }
 }
 
-export default connect(null, {selectInvoice}) (SingleInvoice);
+const mapStateToProps = state => {
+    return {
+        invoices: state.invoices.invoiceList
+    }
+}
+
+export default connect(mapStateToProps, {selectInvoice}) (SingleInvoice);

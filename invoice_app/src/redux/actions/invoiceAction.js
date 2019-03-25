@@ -37,10 +37,11 @@ export const fetchInvoices = () => dispatch => {
 export const selectInvoice = id => dispatch => {
     console.log("you clicked on invoice:", id)
     axios.get(`http://localhost:5000/api/invoices/${id}`)
-        .then(invoiceItem => {
+        .then(invoice => {
+            console.log('selected invoice:', invoice)
             dispatch({
                 type: INVOICE_SELECTED,
-                payload: invoiceItem.data
+                payload: invoice.data
             })
         })
         .catch(err => {

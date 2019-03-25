@@ -29,7 +29,7 @@ class Invoices extends Component {
                     <td> {invoice.shipper}</td>
                     <td> {invoice.consignee}</td>
                     <td>
-                        <Button color="success" onClick={() => this.props.selectInvoice(invoice)}> Select </Button>
+                        <Button color="success" onClick={() => this.props.selectInvoice(invoice.id)}> Select </Button>
                         {/* <Button color="danger">Delete</Button> */}
                     </td>
 
@@ -90,17 +90,12 @@ Invoices.propTypes = {
 
 const mapStateToProps = function (state) {
     return {
-        invoices: state.invoices.invoiceList,
-        invoice: state.invoice
-
-    }
-}
-
-const matchDispatchToProps= function (dispatch) {
-    return {
-        selectInvoice: selectInvoice
+        invoices: state.invoices.invoiceList
+   
     }
 }
 
 
-export default connect(mapStateToProps, matchDispatchToProps, { fetchInvoices, selectInvoice })(Invoices);
+
+
+export default connect(mapStateToProps,{ fetchInvoices, selectInvoice })(Invoices);

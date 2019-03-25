@@ -12,6 +12,7 @@ import {
 
 const initialState = {
     invoiceList: [],
+    invoiceSelected: [],
     invoice: {}, // single invoice that we add
     fetchingInvoices: false,
    
@@ -40,7 +41,7 @@ export default function (state = initialState, action) {
         case INVOICE_SELECTED:
             return {
                 ...state,
-                invoice: action.payload
+                invoiceSelected: action.payload
             };
 
         case NEW_INVOICE:
