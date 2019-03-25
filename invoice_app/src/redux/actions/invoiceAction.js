@@ -2,7 +2,7 @@ import {
     FETCH_INVOICES_SUCCESS,
     FETCH_INVOICES_PENDING,
     FETCH_INVOICES_FAILED,
-    GET_INVOICE,
+    SELECT_INVOICE,
     NEW_INVOICE,
     EDIT_INVOICE,
     DELETE_INVOICE
@@ -31,17 +31,20 @@ export const fetchInvoices = () => dispatch => {
                 payload: "Error in fetching invoices"
             })
         })
-}
+} 
 
 
-export const getInvoice = id => dispatch => {
-
+export const selectInvoice = id => dispatch => {
+    console.log("you clicked on invoice:", id)
     axios.get(`http://localhost:5000/api/invoices/${id}`)
         .then(invoice => {
             dispatch({
-                type: GET_INVOICE,
+                type: SELECT_INVOICE,
                 payload: invoice,
             })
+        })
+        .catch(err => {
+            console.log(err)
         })
 
 }

@@ -2,7 +2,7 @@ import {
     FETCH_INVOICES_SUCCESS,
     FETCH_INVOICES_PENDING,
     FETCH_INVOICES_FAILED,
-    GET_INVOICE,
+    SELECT_INVOICE,
     NEW_INVOICE,
     EDIT_INVOICE,
     DELETE_INVOICE
@@ -37,7 +37,7 @@ export default function (state = initialState, action) {
                 fetchingInvoices: true
             }
 
-        case GET_INVOICE:
+        case SELECT_INVOICE:
             return {
                 ...state,
                 invoice: action.payload
@@ -57,7 +57,6 @@ export default function (state = initialState, action) {
             return {
                 ...state
             }
-
 
         default:
             return state
