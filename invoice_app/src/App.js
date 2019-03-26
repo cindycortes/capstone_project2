@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Dashboard from './components/Dashboard';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NewInvoiceForm from './components/NewInvoiceForm';
+import InvoiceCreate from './components/invoices/InvoiceCreate';
 import SingleInvoice from './components/SingleInvoice';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -19,7 +20,7 @@ class App extends Component {
           <Navbar />
           <Switch>
           <Route exact path="/" component={Dashboard} />
-          <Route path="/newinvoice" component={NewInvoiceForm} />
+          <Route path="/newinvoice" component={InvoiceCreate} />
           <Route path="/invoice/:id" component={SingleInvoice} />
           </Switch>
         </div>
