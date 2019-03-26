@@ -3,7 +3,7 @@ import {
     FETCH_INVOICES_PENDING,
     FETCH_INVOICES_FAILED,
     INVOICE_SELECTED,
-    NEW_INVOICE,
+    CREATE_INVOICE,
     EDIT_INVOICE,
     DELETE_INVOICE_FAILED,
     DELETE_INVOICE_PENDING,
@@ -75,23 +75,17 @@ export const deleteInvoice = id => dispatch => {
 
 
 
-export const createInvoice = postData => dispatch => {
-
-    axios.post(`http://localhost:5000/api/invoices`, postData)
-        .then(function (invoice) {
-            console.log(invoice);
-            dispatch({
-                type: NEW_INVOICE,
-                payload: invoice
-
-            })
-        })
-
+export const createInvoice = formValues => dispatch => {
+    const response = axios.post(`http://localhost:5000/api/invoices`, formValues);
+    dispatch({
+        type: CREATE_INVOICE,
+        payload: response.data
+    })
 }
 
-export const editInvoice = id => dispatch => {
+export const editInvoice = (id, formValues) => dispatch => {
 
-    axios.put(`http://localhost:5000/api/invoices/${id}`)
+    axios.put(`http://localhost:5000/api/invoices/${id}`, formValues)
 
         .then(invoice => {
             dispatch({

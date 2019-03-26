@@ -3,7 +3,7 @@ import {
     FETCH_INVOICES_PENDING,
     FETCH_INVOICES_FAILED,
     INVOICE_SELECTED,
-    NEW_INVOICE,
+    CREATE_INVOICE,
     EDIT_INVOICE,
     DELETE_INVOICE_FAILED,
     DELETE_INVOICE_PENDING,
@@ -47,7 +47,7 @@ export default function (state = initialState, action) {
                 invoiceSelected: action.payload
             };
 
-        case NEW_INVOICE:
+        case CREATE_INVOICE:
             return {
                 ...state,
                 invoice: action.payload
