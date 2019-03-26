@@ -5,7 +5,9 @@ import {
     INVOICE_SELECTED,
     NEW_INVOICE,
     EDIT_INVOICE,
-    DELETE_INVOICE
+    DELETE_INVOICE_FAILED,
+    DELETE_INVOICE_PENDING,
+    DELETE_INVOICE_SUCCESS
 
 } from './types';
 import axios from 'axios';
@@ -31,7 +33,7 @@ export const fetchInvoices = () => dispatch => {
                 payload: "Error in fetching invoices"
             })
         })
-} 
+}
 
 
 export const selectInvoice = id => dispatch => {
@@ -50,6 +52,29 @@ export const selectInvoice = id => dispatch => {
 
 }
 
+export const deleteInvoice = id => dispatch => {
+    console.log('you clicked on deleteinvoice id:', id)
+    dispatch({
+        type: DELETE_INVOICE_PENDING
+    })
+    axios.delete(`http://localhost:5000/api/invoices/${id}`)
+        .then(invoice => {
+            console.log("delete invoice :", invoice)
+            dispatch({
+                type: DELETE_INVOICE_SUCCESS,
+                payload: id
+            })
+        })
+        .catch(error => {
+            dispatch({
+                type: DELETE_INVOICE_FAILED,
+                payload: "Error in deleting invoice", error
+            })
+        })
+}
+
+
+
 export const createInvoice = postData => dispatch => {
 
     axios.post(`http://localhost:5000/api/invoices`, postData)
@@ -67,24 +92,18 @@ export const createInvoice = postData => dispatch => {
 export const editInvoice = id => dispatch => {
 
     axios.put(`http://localhost:5000/api/invoices/${id}`)
+
         .then(invoice => {
             dispatch({
                 type: EDIT_INVOICE,
-                payload: invoice
+                payload: invoice.data
             })
+        })
+        .catch(err => {
+            console.log(err)
         })
 
 
 }
 
 
-export const deleteInvoice = id => dispatch => {
-    axios.delete(`http://localhost:5000/api/invoices/${id}`)
-        .then(response => {
-            dispatch({
-                type: DELETE_INVOICE,
-                payload: response
-            })
-        })
-
-}

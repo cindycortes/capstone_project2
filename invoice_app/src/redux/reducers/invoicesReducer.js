@@ -5,7 +5,9 @@ import {
     INVOICE_SELECTED,
     NEW_INVOICE,
     EDIT_INVOICE,
-    DELETE_INVOICE
+    DELETE_INVOICE_FAILED,
+    DELETE_INVOICE_PENDING,
+    DELETE_INVOICE_SUCCESS
 
 } from '../actions/types';
 
@@ -15,7 +17,8 @@ const initialState = {
     invoiceSelected: [],
     invoice: {}, // single invoice that we add
     fetchingInvoices: false,
-   
+    deletingInvoice: false
+
 }
 
 export default function (state = initialState, action) {
@@ -54,10 +57,28 @@ export default function (state = initialState, action) {
             return {
                 ...state
             }
-        case DELETE_INVOICE:
+        case DELETE_INVOICE_PENDING:
             return {
-                ...state
+                ...state,
+                deletingInvoice: true
             }
+        
+        case DELETE_INVOICE_SUCCESS:
+            const id = action.payload
+            return {
+                ...state,
+                invoiceList: state.invoiceList.filter(item => item.id !== id),
+                // invoices.filter((invoice) => invoice.id !== action.id)
+                deletingInvoice: false
+
+            }
+        case DELETE_INVOICE_FAILED:
+            return {
+                ...state,
+                deletingInvoice: true
+
+            }    
+
 
         default:
             return state

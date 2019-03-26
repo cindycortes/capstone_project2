@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import SingleInvoice from './SingleInvoice';
 import { Button, ListGroup, ListGroupItem, Table, Container, Row, Col } from 'reactstrap'
 import { connect } from 'react-redux';
-import { fetchInvoices, selectInvoice } from '../redux/actions/invoiceAction';
+import { fetchInvoices, selectInvoice, deleteInvoice } from '../redux/actions/invoiceAction';
 import PropTypes from 'prop-types';
 
 class Invoices extends Component {
@@ -12,7 +12,9 @@ class Invoices extends Component {
     }
 
 
+
     renderList() {
+        console.log('props in invoices:', this.props);
         return this.props.invoices.map((invoice) => {
 
             return (
@@ -24,15 +26,14 @@ class Invoices extends Component {
                     <td> {invoice.consignee}</td>
                     <td>
                         <Button color="success" onClick={() => this.props.selectInvoice(invoice.id)}> Select </Button>
-                        {/* <Button color="danger">Delete</Button> */}
+                        <Button color="danger" onClick={() => this.props.deleteInvoice(invoice.id)}>Delete</Button>
                     </td>
 
-                    {/* <Button color="danger" onClick={() => deleteInvoice(invoice.id)}>Delete</Button> */}
+                    
                 </tr>
             )
         });
     }
-
 
 
     render() {
@@ -88,6 +89,8 @@ class Invoices extends Component {
 
 Invoices.propTypes = {
     fetchInvoices: PropTypes.func.isRequired,
+    selectInvoice: PropTypes.func.isRequired,
+    deleteInvoice: PropTypes.func.isRequired,
     invoices: PropTypes.array.isRequired,
     invoice: PropTypes.object.isRequired,
     newInvoice: PropTypes.object
@@ -103,4 +106,4 @@ const mapStateToProps = function (state) {
 
 
 
-export default connect(mapStateToProps, { fetchInvoices, selectInvoice })(Invoices);
+export default connect(mapStateToProps, { fetchInvoices, selectInvoice, deleteInvoice })(Invoices);

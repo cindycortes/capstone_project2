@@ -42,7 +42,10 @@ namespace invoice_api
             {
                 // NOTE: Change Cors Policy
                 app.UseCors(
-                    options => options.AllowAnyOrigin()
+                    options => {
+                        options.AllowAnyOrigin();
+                        options.AllowAnyMethod();
+                    }
                 );
                 app.UseDeveloperExceptionPage();
             }
