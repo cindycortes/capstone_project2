@@ -40,6 +40,7 @@ class Invoices extends Component {
 
         return (
             <div>
+                
                 <Row>
                     <Col>
                         <div className="container">
@@ -65,8 +66,17 @@ class Invoices extends Component {
 
                     <Col>
                         <div className="container">
+                            <Row>
+                                {/* <h3>Invoice Item</h3> */}
+                            </Row>
+                            <br/>
+                            <br/>
 
-                            <SingleInvoice />
+                            <Row>
+
+                                <SingleInvoice />
+                            </Row>
+
 
                         </div>
                     </Col>

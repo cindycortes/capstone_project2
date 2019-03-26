@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Invoices from './Invoices';
 import NewInvoiceForm from './NewInvoiceForm';
+import { Row } from 'reactstrap'
 
 
 class Dashboard extends Component {
@@ -25,8 +26,10 @@ class Dashboard extends Component {
     render() {
         return (
             <div className="Dashboard">
-                <Invoices  />
-                
+
+                <Invoices />
+
+
             </div>
         )
     }

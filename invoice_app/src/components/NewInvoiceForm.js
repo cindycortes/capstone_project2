@@ -46,7 +46,7 @@ class NewInvoiceForm extends Component {
                 <Row form>
                     <Col md={8}>
                         <FormGroup>
-                            <Label for="Business">Business</Label>
+                            <Label for="Business">Company</Label>
                             <Input onChange={this.handleChange} type="select" value={this.state.Business} name="business" id="Business" placeholder="with a placeholder" >
                                <option>JJ Cortes Trucking</option>
                                <option>Cindy Trucking</option>
