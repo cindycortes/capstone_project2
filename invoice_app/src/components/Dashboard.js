@@ -26,7 +26,7 @@ class Dashboard extends Component {
         return (
             <div className="Dashboard">
                 <Invoices  />
-                {/* <NewInvoiceForm addInvoice={this.addInvoice} /> */}
+                
             </div>
         )
     }

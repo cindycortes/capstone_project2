@@ -11,12 +11,6 @@ class Invoices extends Component {
         this.props.fetchInvoices();
     }
 
-    // componentWillReceiveProps(nextProps) {
-    //     if(nextProps.newInvoice) {
-    //         this.props.invoices.unshift(nextProps.newInvoice)
-    //     }
-    // }
-
 
     renderList() {
         return this.props.invoices.map((invoice) => {
@@ -39,44 +33,45 @@ class Invoices extends Component {
         });
     }
 
-    
+
 
     render() {
 
 
         return (
-            <Container>
+            <div>
                 <Row>
-                    <Col xs="6">
+                    <Col>
+                        <div className="container">
+                            <h2>List of Invoices</h2>
+                            <Button href="/newinvoice" className="my-3" color="primary">Add Invoice</Button>
+                            <Table>
+                                <thead>
+                                    <tr>
+                                        <th>Invoice #</th>
+                                        <th>Shipper</th>
+                                        <th>Consignee</th>
+                                        <th></th>
 
-                        <h2>List of Invoices</h2>
-                        <Button href="/newinvoice" className="my-3" color="primary">Add Invoice</Button>
-                        <Table>
-                            <thead>
-                                <tr>
-                                    <th>Invoice #</th>
-                                    {/* <th>Business</th> */}
-                                    <th>Shipper</th>
-                                    <th>Consignee</th>
-                                    <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {this.renderList()}
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.renderList()}
-
-                            </tbody>
-                        </Table>
-
+                                </tbody>
+                            </Table>
+                        </div>
                     </Col>
 
-                    <Col xs="6">
-                        <SingleInvoice />
+                    <Col>
+                        <div className="container">
 
+                            <SingleInvoice />
 
+                        </div>
                     </Col>
                 </Row>
-            </Container >
+            </div >
         )
     }
 }
@@ -91,11 +86,11 @@ Invoices.propTypes = {
 const mapStateToProps = function (state) {
     return {
         invoices: state.invoices.invoiceList
-   
+
     }
 }
 
 
 
 
-export default connect(mapStateToProps,{ fetchInvoices, selectInvoice })(Invoices);
+export default connect(mapStateToProps, { fetchInvoices, selectInvoice })(Invoices);
