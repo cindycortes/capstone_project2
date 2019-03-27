@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import SingleInvoice from './SingleInvoice';
+import InvoiceEdit from './invoices/InvoiceEdit';
 import { Button, ListGroup, ListGroupItem, Table, Container, Row, Col } from 'reactstrap'
 import { connect } from 'react-redux';
 import { fetchInvoices, selectInvoice, deleteInvoice } from '../redux/actions/invoiceAction';
 import PropTypes from 'prop-types';
+import Pagination from './Pagination';
 
 class Invoices extends Component {
 
@@ -26,7 +27,7 @@ class Invoices extends Component {
                     <td> {invoice.consignee}</td>
                     <td>
                         <Button color="success" onClick={() => this.props.selectInvoice(invoice.id)}> Select </Button>
-                        <Button color="danger" onClick={() => this.props.deleteInvoice(invoice.id)}>Delete</Button>
+                        {/* <Button color="danger" onClick={() => this.props.deleteInvoice(invoice.id)}>Delete</Button> */}
                     </td>
 
                     
@@ -46,7 +47,7 @@ class Invoices extends Component {
                     <Col>
                         <div className="container">
                             <h2>List of Invoices</h2>
-                            <Button href="/newinvoice" className="my-3" color="primary">Add Invoice</Button>
+                            <Button href="/invoice/new" className="my-3" color="primary">Add Invoice</Button>
                             <Table>
                                 <thead>
                                     <tr>
@@ -62,6 +63,7 @@ class Invoices extends Component {
 
                                 </tbody>
                             </Table>
+                            <Pagination />
                         </div>
                     </Col>
 
@@ -75,7 +77,7 @@ class Invoices extends Component {
 
                             <Row>
 
-                                <SingleInvoice />
+                                <InvoiceEdit />
                             </Row>
 
 

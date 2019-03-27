@@ -75,13 +75,14 @@ export const deleteInvoice = id => dispatch => {
 
 
 
-export const createInvoice = formValues => dispatch => {
-    const response = axios.post(`http://localhost:5000/api/invoices`, formValues);
+export const createInvoice = id => dispatch => {
+    const response = axios.post(`http://localhost:5000/api/invoices`)
     dispatch({
         type: CREATE_INVOICE,
         payload: response.data
     })
 }
+
 
 export const editInvoice = (id, formValues) => dispatch => {
 

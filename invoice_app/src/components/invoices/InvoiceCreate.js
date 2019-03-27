@@ -1,37 +1,12 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 // import { createInvoice } from '../../redux/actions/invoiceAction';
 import { Form, FormGroup, Label, Row, Col } from 'reactstrap';
 
 
 class InvoiceCreate extends React.Component {
-    // renderError({ error, touched }) {
-    //     if (touched && error) {
-    //         return (
-    //             <div className="ui error message">
-    //                 <div className="header">{error}</div>
-    //             </div>
-    //         )
-    //     }
-    // }
 
-
-    // renderInput = ({ input, label, meta }) => {
-    //     // console.log(formProps);
-    //     console.log(meta);
-    //     const className = `field ${meta.error && meta.touched ? 'error' : ''}`;
-    //     return (
-    //         <div className={className}>
-    //             <div className="form-group">
-    //                 <label>{label}</label> <br />
-    //                 <input {...input} autoComplete="off" />
-    //                 {this.renderError(meta)}
-
-    //             </div>
-    //         </div>
-    //     )
-    // }
 
     submit = values => {
         console.log(values)
@@ -114,7 +89,7 @@ class InvoiceCreate extends React.Component {
 
                         <FormGroup>
                             <Label for="description_commodity">Description_Commodity </Label>
-                            <Field className="form-control" name="description_commodity" component="input" type="text" placeholder="Check In / Check Out" />
+                            <Field className="form-control" name="description_commodity" component="input" type="textarea" placeholder="Check In / Check Out" />
                         </FormGroup>
                     </Col>
                     <Col md={2}>
