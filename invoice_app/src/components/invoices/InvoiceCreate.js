@@ -37,9 +37,9 @@ class InvoiceCreate extends React.Component {
         console.log(values)
     }
 
-    
+
     render() {
-        
+
         // console.log(this.props);
         return (
             <Form className="container" onSubmit={this.submit}>
@@ -55,76 +55,90 @@ class InvoiceCreate extends React.Component {
                     <Col md={3}>
                         <FormGroup>
                             <Label for="date">Date</Label>
-                            <Field className="form-control" name="date" component="input" type="text" label="date" />
+                            <Field className="form-control" name="date" component="input" type="date" label="date" />
                         </FormGroup>
                     </Col>
                     <Col md={3}>
 
                         <FormGroup>
                             <Label for="invoiceNumber">Invoice No.</Label>
-                            <Field className="form-control" name="invoiceNumber" component="input" type="text" label="invoiceNumber" />
+                            <Field className="form-control" name="invoiceNumber" component="input" type="text" placeholder="Invoice Number" />
                         </FormGroup>
                     </Col>
 
                 </Row>
 
                 <Row>
-                    
-                    <Col md={6}>
+
+                    <Col>
                         <FormGroup>
                             <Label for="shipper">Shipper</Label>
-                            <Field className="form-control" name="shipper" component="input" type="text" label="shipper" />
+                            <Field className="form-control" name="shipper" component="input" type="text" placeholder="Shipper's Name and Address" />
+                        </FormGroup>
+                    </Col>
+
+                </Row>
+                <Row>
+                    <Col>
+                        <FormGroup>
+                            <Label for="consignee">Consignee</Label>
+                            <Field className="form-control" name="consignee" component="input" type="text" placeholder="Consignee's Name and Address" />
+                        </FormGroup>
+                    </Col>
+                </Row>
+
+                <Row>
+                    <Col md={3}>
+                        <FormGroup>
+                            <Label for="dateShipped">Date Shipped: </Label>
+                            <Field className="form-control" name="dateShipped" component="input" type="date" label="dateShipped" />
+                        </FormGroup>
+                    </Col>
+                    <Col md={3}>
+                        <FormGroup>
+                            <Label for="driver">Driver </Label>
+                            <Field className="form-control" name="driver" component="input" type="text" placeholder="Driver's Name" />
                         </FormGroup>
                     </Col>
                     <Col md={6}>
                         <FormGroup>
-                            <Label for="consignee">Consignee</Label>
-                            <Field className="form-control" name="consignee" component="input" type="text" label="consignee" />
+                            <Label for="shippersNumbers">Shippers No. : </Label>
+                            <Field className="form-control" name="shippersNumbers" component="input" type="text" placeholder="Order #" />
+                        </FormGroup>
+                    </Col>
+
+                </Row>
+
+                <Row>
+                    <Col md={6}>
+
+                        <FormGroup>
+                            <Label for="description_commodity">Description_Commodity </Label>
+                            <Field className="form-control" name="description_commodity" component="input" type="text" placeholder="Check In / Check Out" />
+                        </FormGroup>
+                    </Col>
+                    <Col md={2}>
+                        <FormGroup>
+                            <Label for="weight_quantity">Weight / Quantity </Label>
+                            <Field className="form-control" name="weight_quantity" component="input" type="text" placeholder="weight_quantity" />
+                        </FormGroup>
+                    </Col>
+                    <Col md={2}>
+                        <FormGroup>
+                            <Label for="rate">Rate </Label>
+                            <Field className="form-control" name="rate" component="input" type="text" placeholder="rate" />
+                        </FormGroup>
+                    </Col>
+                    <Col md={2}>
+                        <FormGroup>
+                            <Label for="charges">Charges </Label>
+                            <Field className="form-control" name="charges" component="input" type="text" placeholder="charges" />
                         </FormGroup>
                     </Col>
                 </Row>
-                <Row>
-                    <Col md={6}>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md={6}>
-                    </Col>
-                </Row>
-
-
-                <FormGroup>
-                    <Label for="dateShipped">Date Shipped: </Label>
-                    <Field className="form-control" name="dateShipped" component="input" type="text" label="dateShipped" />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="driver">Driver </Label>
-                    <Field className="form-control" name="driver" component="input" type="text" label="driver" />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="shippersNumbers">Shippers No. : </Label>
-                    <Field className="form-control" name="shippersNumbers" component="input" type="text" label="shippersNumbers" />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="description_commodity">Description_Commodity </Label>
-                    <Field className="form-control" name="description_commodity" component="input" type="text" label="description_commodity" />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="weight_quantity">Description_Commodity </Label>
-                    <Field className="form-control" name="weight_quantity" component="input" type="text" label="weight_quantity" />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="rate">Description_Commodity </Label>
-                    <Field className="form-control" name="rate" component="input" type="text" label="rate" />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="charges">Description_Commodity </Label>
-                    <Field className="form-control" name="charges" component="input" type="text" label="charges" />
-                </FormGroup>
-
 
                 <button type="submit">Submit</button>
-            </Form>
+            </Form >
         )
     }
 
@@ -134,5 +148,5 @@ class InvoiceCreate extends React.Component {
 
 
 export default reduxForm({
-    form: 'invoiceCreate', 
-}) (InvoiceCreate)
+    form: 'invoiceCreate',
+})(InvoiceCreate)
