@@ -6,32 +6,32 @@ import { Form, FormGroup, Label } from 'reactstrap';
 
 
 class InvoiceCreate extends React.Component {
-    renderError({ error, touched }) {
-        if (touched && error) {
-            return (
-                <div className="ui error message">
-                    <div className="header">{error}</div>
-                </div>
-            )
-        }
-    }
+    // renderError({ error, touched }) {
+    //     if (touched && error) {
+    //         return (
+    //             <div className="ui error message">
+    //                 <div className="header">{error}</div>
+    //             </div>
+    //         )
+    //     }
+    // }
 
 
-    renderInput = ({ input, label, meta }) => {
-        // console.log(formProps);
-        console.log(meta);
-        const className = `field ${meta.error && meta.touched ? 'error' : ''}`;
-        return (
-            <div className={className}>
-                <div className="form-group">
-                    <label>{label}</label> <br />
-                    <input {...input} autoComplete="off" />
-                    {this.renderError(meta)}
+    // renderInput = ({ input, label, meta }) => {
+    //     // console.log(formProps);
+    //     console.log(meta);
+    //     const className = `field ${meta.error && meta.touched ? 'error' : ''}`;
+    //     return (
+    //         <div className={className}>
+    //             <div className="form-group">
+    //                 <label>{label}</label> <br />
+    //                 <input {...input} autoComplete="off" />
+    //                 {this.renderError(meta)}
 
-                </div>
-            </div>
-        )
-    }
+    //             </div>
+    //         </div>
+    //     )
+    // }
 
     onSubmit = (formValues) => {
         // console.log(formValues);
@@ -45,6 +45,7 @@ class InvoiceCreate extends React.Component {
                 <FormGroup>
                     <Label for="business">Business</Label>
                     <Field className="form-control" name="business" component="input" label="Business" />
+                    
                 </FormGroup>
                 
                 <FormGroup>
@@ -60,22 +61,38 @@ class InvoiceCreate extends React.Component {
                     <Field className="form-control" name="shipper" component="input" label="shipper" />
                 </FormGroup>
                 <FormGroup>
-                    <Label for="exampleEmail">Email</Label>
-                    <Field className="form-control" name="invoiceNumber" component="input" label="invoiceNumber" />
+                    <Label for="consignee">Consignee</Label>
+                    <Field className="form-control" name="consignee" component="input" label="consignee" />
                 </FormGroup>
-                
-
-                <Field className="form-control" name="invoiceNumber" component="input" label="invoiceNumber" />
-                <Field className="form-control" name="date" component="input" label="Date" />
-                <Field name="shipper" component="input" label="Shipper" />
-                <Field name="consignee" component="input" label="Consignee" />
-                <Field name="dateShipped" component="input" label="Date Shipped" />
-                <Field name="driver" component="input" label="Driver" />
-                <Field name="shippersNumbers" component="input" label="Shippers Numbers" />
-                <Field name="description_commodity" component="input" label="Description Commodity" />
-                <Field name="weight_quantity" component="input" label="Weight_Quantity" />
-                <Field name="rate" component="input" label="Rate" />
-                <Field name="charges" component="input" label="Charges" />
+                <FormGroup>
+                    <Label for="dateShipped">Date Shipped: </Label>
+                    <Field className="form-control" name="dateShipped" component="input" label="dateShipped" />
+                </FormGroup>
+                <FormGroup>
+                    <Label for="driver">Driver </Label>
+                    <Field className="form-control" name="driver" component="input" label="driver" />
+                </FormGroup>
+                <FormGroup>
+                    <Label for="shippersNumbers">Shippers No. : </Label>
+                    <Field className="form-control" name="shippersNumbers" component="input" label="shippersNumbers" />
+                </FormGroup>
+                <FormGroup>
+                    <Label for="description_commodity">Description_Commodity </Label>
+                    <Field className="form-control" name="description_commodity" component="input" label="description_commodity" />
+                </FormGroup>
+                <FormGroup>
+                    <Label for="weight_quantity">Description_Commodity </Label>
+                    <Field className="form-control" name="weight_quantity" component="input" label="weight_quantity" />
+                </FormGroup>
+                <FormGroup>
+                    <Label for="rate">Description_Commodity </Label>
+                    <Field className="form-control" name="rate" component="input" label="rate" />
+                </FormGroup>
+                <FormGroup>
+                    <Label for="charges">Description_Commodity </Label>
+                    <Field className="form-control" name="charges" component="input" label="charges" />
+                </FormGroup>
+               
 
                 <button>Submit</button>
             </Form>
@@ -84,21 +101,11 @@ class InvoiceCreate extends React.Component {
 
 }
 
-const validate = (formValues) => {
-    const errors = {};
-
-    if (!formValues.business) {
-        errors.business = "You must enter a business";
-    }
-    // if(!formValues.date) {
-    //     errors.date = "You must enter a date";
-    // }
-    return errors;
-}
+//initial values
 
 const formWrapped = reduxForm({
-    form: 'invoiceCreate',
-    validate
+    form: 'invoiceCreate'
+  
 })(InvoiceCreate);
 
-export default connect(null, { createInvoice })(formWrapped);
+export default InvoiceCreate;
