@@ -2,29 +2,29 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { createInvoice } from '../../redux/actions/invoiceAction';
-
+import { Form, FormGroup, Label } from 'reactstrap'; 
 
 
 class InvoiceCreate extends React.Component {
     renderError({ error, touched }) {
         if (touched && error) {
-            return(
+            return (
                 <div className="ui error message">
                     <div className="header">{error}</div>
                 </div>
             )
         }
     }
-    
-    
+
+
     renderInput = ({ input, label, meta }) => {
         // console.log(formProps);
         console.log(meta);
-        const className = `field ${meta.error && meta.touched ? 'error': ''}`;
+        const className = `field ${meta.error && meta.touched ? 'error' : ''}`;
         return (
             <div className={className}>
                 <div className="form-group">
-                    <label>{label}</label> <br/>
+                    <label>{label}</label> <br />
                     <input {...input} autoComplete="off" />
                     {this.renderError(meta)}
 
@@ -33,7 +33,7 @@ class InvoiceCreate extends React.Component {
         )
     }
 
-    onSubmit= (formValues) => {
+    onSubmit = (formValues) => {
         // console.log(formValues);
         this.props.createInvoice(formValues);
     }
@@ -41,27 +41,44 @@ class InvoiceCreate extends React.Component {
     render() {
         // console.log(this.props);
         return (
-            <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="container error">
-                <div className="form-group row">
+            <Form onSubmit={this.props.handleSubmit(this.onSubmit)} >
+                <FormGroup>
+                    <Label for="business">Business</Label>
+                    <Field className="form-control" name="business" component="input" label="Business" />
+                </FormGroup>
+                
+                <FormGroup>
+                    <Label for="invoiceNumber">Invoice No.</Label>
+                    <Field className="form-control" name="invoiceNumber" component="input" label="invoiceNumber" />
+                </FormGroup>
+                <FormGroup>
+                    <Label for="date">Date</Label>
+                    <Field className="form-control" name="date" component="input" label="date" />
+                </FormGroup>
+                <FormGroup>
+                    <Label for="shipper">Shipper</Label>
+                    <Field className="form-control" name="shipper" component="input" label="shipper" />
+                </FormGroup>
+                <FormGroup>
+                    <Label for="exampleEmail">Email</Label>
+                    <Field className="form-control" name="invoiceNumber" component="input" label="invoiceNumber" />
+                </FormGroup>
+                
 
-                    <Field name="business" component={this.renderInput} label="Business" />
-                </div>
-                <div className="form-group">
-                    <Field name="invoiceNumber" component={this.renderInput} label="invoiceNumber" />
-                    <Field name="date" component={this.renderInput} label="Date" />
-                </div>
-                <Field name="shipper" component={this.renderInput} label="Shipper" />
-                <Field name="consignee" component={this.renderInput} label="Consignee" />
-                <Field name="dateShipped" component={this.renderInput} label="Date Shipped" />
-                <Field name="driver" component={this.renderInput} label="Driver" />
-                <Field name="shippersNumbers" component={this.renderInput} label="Shippers Numbers" />
-                <Field name="description_commodity" component={this.renderInput} label="Description Commodity" />
-                <Field name="weight_quantity" component={this.renderInput} label="Weight_Quantity" />
-                <Field name="rate" component={this.renderInput} label="Rate" />
-                <Field name="charges" component={this.renderInput} label="Charges" />
+                <Field className="form-control" name="invoiceNumber" component="input" label="invoiceNumber" />
+                <Field className="form-control" name="date" component="input" label="Date" />
+                <Field name="shipper" component="input" label="Shipper" />
+                <Field name="consignee" component="input" label="Consignee" />
+                <Field name="dateShipped" component="input" label="Date Shipped" />
+                <Field name="driver" component="input" label="Driver" />
+                <Field name="shippersNumbers" component="input" label="Shippers Numbers" />
+                <Field name="description_commodity" component="input" label="Description Commodity" />
+                <Field name="weight_quantity" component="input" label="Weight_Quantity" />
+                <Field name="rate" component="input" label="Rate" />
+                <Field name="charges" component="input" label="Charges" />
 
                 <button>Submit</button>
-            </form>
+            </Form>
         )
     }
 
@@ -69,8 +86,8 @@ class InvoiceCreate extends React.Component {
 
 const validate = (formValues) => {
     const errors = {};
-    
-    if(!formValues.business) {
+
+    if (!formValues.business) {
         errors.business = "You must enter a business";
     }
     // if(!formValues.date) {
@@ -82,6 +99,6 @@ const validate = (formValues) => {
 const formWrapped = reduxForm({
     form: 'invoiceCreate',
     validate
-})(InvoiceCreate); 
+})(InvoiceCreate);
 
 export default connect(null, { createInvoice })(formWrapped);

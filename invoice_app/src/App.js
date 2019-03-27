@@ -20,7 +20,7 @@ class App extends Component {
           <Navbar />
           <Switch>
           <Route exact path="/" component={Dashboard} />
-          <Route path="/invoice/new" component={NewInvoiceForm} />
+          <Route path="/invoice/new" component={InvoiceCreate} />
           <Route path="/invoice/:id" component={SingleInvoice} />
           </Switch>
         </div>
