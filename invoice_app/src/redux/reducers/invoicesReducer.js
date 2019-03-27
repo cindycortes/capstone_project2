@@ -54,9 +54,9 @@ export default function (state = initialState, action) {
             };
 
         case EDIT_INVOICE:
-            return {
-                ...state
-            }
+            return { ...state.invoice, [action.payload.id]: action.payload }; //key interpolation syntax
+
+
         case DELETE_INVOICE_PENDING:
             return {
                 ...state,
