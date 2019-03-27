@@ -23,9 +23,12 @@ class InvoiceCreate extends React.Component {
         const className = `field ${meta.error && meta.touched ? 'error': ''}`;
         return (
             <div className={className}>
-                <label>{label}</label> <br/>
-                <input {...input} autoComplete="off" />
-                {this.renderError(meta)}
+                <div className="form-group">
+                    <label>{label}</label> <br/>
+                    <input {...input} autoComplete="off" />
+                    {this.renderError(meta)}
+
+                </div>
             </div>
         )
     }
@@ -39,9 +42,14 @@ class InvoiceCreate extends React.Component {
         // console.log(this.props);
         return (
             <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="container error">
-                <Field name="business" component={this.renderInput} label="Business" />
-                <Field name="invoiceNumber" component={this.renderInput} label="invoiceNumber" />
-                <Field name="date" component={this.renderInput} label="Date" />
+                <div className="form-group row">
+
+                    <Field name="business" component={this.renderInput} label="Business" />
+                </div>
+                <div className="form-group">
+                    <Field name="invoiceNumber" component={this.renderInput} label="invoiceNumber" />
+                    <Field name="date" component={this.renderInput} label="Date" />
+                </div>
                 <Field name="shipper" component={this.renderInput} label="Shipper" />
                 <Field name="consignee" component={this.renderInput} label="Consignee" />
                 <Field name="dateShipped" component={this.renderInput} label="Date Shipped" />

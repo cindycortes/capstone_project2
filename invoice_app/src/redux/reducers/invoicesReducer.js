@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import {
     FETCH_INVOICES_SUCCESS,
     FETCH_INVOICES_PENDING,
@@ -24,6 +25,7 @@ const initialState = {
 export default function (state = initialState, action) {
     switch (action.type) {
         case FETCH_INVOICES_SUCCESS:
+        
             console.log('reducer')
             return {
                 ...state,
@@ -48,13 +50,14 @@ export default function (state = initialState, action) {
             };
 
         case CREATE_INVOICE:
-            return {
-                ...state,
-                invoice: action.payload
-            };
+            return 
+            // return {
+            //     ...state,
+            //     invoice: action.payload
+            // };
 
         case EDIT_INVOICE:
-            return { ...state.invoice, [action.payload.id]: action.payload }; //key interpolation syntax
+            return { ...state, [action.payload.id]: action.payload }; //key interpolation syntax
 
 
         case DELETE_INVOICE_PENDING:
@@ -64,14 +67,16 @@ export default function (state = initialState, action) {
             }
         
         case DELETE_INVOICE_SUCCESS:
-            const id = action.payload
-            return {
-                ...state,
-                invoiceList: state.invoiceList.filter(item => item.id !== id),
-                // invoices.filter((invoice) => invoice.id !== action.id)
-                deletingInvoice: false
+            return  _.omit(state, action.payload)
+               
+            // const id = action.payload
+            // return {
+            //     ...state,
+            //     invoiceList: state.invoiceList.filter(item => item.id !== id),
+            //     // invoices.filter((invoice) => invoice.id !== action.id)
+            //     deletingInvoice: false
 
-            }
+            // }
         case DELETE_INVOICE_FAILED:
             return {
                 ...state,
