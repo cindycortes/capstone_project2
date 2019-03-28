@@ -10,7 +10,7 @@ import { Form, FormGroup, Label, Row, Col } from 'reactstrap';
 
 let InvoiceCreate = props => {
 
-    function submitNewInvoice (values) {
+    function submitNewInvoice(values) {
         console.log("values", values);
         props.createInvoice(values)
     }
@@ -22,18 +22,26 @@ let InvoiceCreate = props => {
         <Form className="container" onSubmit={handleSubmit(submitNewInvoice)}>
             <h1>Add New Invoice </h1>
             <Row>
-            <Col md={2}>
+                <Col md={2}>
                     <FormGroup>
                         <Label for="UserId">UserId</Label>
-                        <Field className="form-control" name="UserId" component="input" type="text" placeholder="UserId" />
+                        <Field className="form-control" name="UserId" component="select" placeholder="UserId">
+                            <option></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </Field>
+
 
                     </FormGroup>
                 </Col>
                 <Col md={4}>
                     <FormGroup>
                         <Label for="BusinessId">Business Name</Label>
-                        <Field className="form-control" name="BusinessId" component="input" type="text" placeholder="Business Name" />
-
+                        <Field className="form-control" name="BusinessId" component="select" placeholder="Business Name">
+                            <option></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </Field>
                     </FormGroup>
                 </Col>
                 <Col md={3}>
@@ -81,7 +89,12 @@ let InvoiceCreate = props => {
                 <Col md={3}>
                     <FormGroup>
                         <Label for="DriverId">Driver </Label>
-                        <Field className="form-control" name="DriverId" component="input" type="text" placeholder="Driver's Name" />
+                        <Field className="form-control" name="DriverId" component="select" placeholder="Driver's Name" >
+                            <option></option>
+                            <option value="1">Cindy</option>
+                            <option value="Daniel">Daniel</option>
+                        </Field>
+
                     </FormGroup>
                 </Col>
                 <Col md={6}>
@@ -132,6 +145,6 @@ let InvoiceCreate = props => {
 InvoiceCreate = reduxForm({
     form: 'invoiceCreate',
     destroyOnUnmount: false
-})(InvoiceCreate) 
+})(InvoiceCreate)
 
-export default connect(null, {createInvoice})(InvoiceCreate)
+export default connect(null, { createInvoice })(InvoiceCreate)
