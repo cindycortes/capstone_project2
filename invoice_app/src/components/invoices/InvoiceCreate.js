@@ -7,13 +7,13 @@ import axios from 'axios';
 
 
 
-// const submitToServer = (InvoiceCreate) => {
-//     try {
-//         return axios.post(`http://localhost:5000/api/invoices`)
-//     } catch (error) {
-//         console.log(error)
-//     }
-// }
+const submitToServer = () => {
+    try {
+        return axios.post(`http://localhost:5000/api/invoices`)
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 const InvoiceCreate = props => {
 
@@ -22,7 +22,7 @@ const InvoiceCreate = props => {
     const { handleSubmit } = props;
 
     return (
-        <Form className="container" onSubmit={handleSubmit(handleSubmit)}>
+        <Form className="container" onSubmit={handleSubmit(submitToServer)}>
             <h1>Add New Invoice </h1>
             <Row>
                 <Col md={6}>

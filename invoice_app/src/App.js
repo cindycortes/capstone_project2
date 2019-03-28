@@ -7,6 +7,9 @@ import NewInvoiceForm from './components/NewInvoiceForm';
 import InvoiceCreate from './components/invoices/InvoiceCreate';
 import SingleInvoice from './components/SingleInvoice';
 import InvoiceEdit from './components/invoices/InvoiceEdit';
+import Login from './components/auth/Login';
+// import Register from './components/auth/Register';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -23,6 +26,9 @@ class App extends Component {
           <Route exact path="/" component={Dashboard} />
           <Route path="/invoice/new" component={InvoiceCreate} />
           <Route path="/invoice/edit" component={InvoiceEdit} />
+          <Route path="/login" component={Login} />
+          {/* <Route path="/register" component={Register} /> */}
+
           </Switch>
         </div>
       
