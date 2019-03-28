@@ -23,7 +23,7 @@ class InvoiceEdit extends React.Component {
                     <Col md={6}>
                         <FormGroup>
                             <Label for="business">Business Name</Label>
-                            <Field className="form-control" name="business" component="input" type="text" placeholder="Business Name" />
+                            <Field className="form-control" name="business" component="textarea" type="textarea" placeholder="Business Name" />
 
                         </FormGroup>
                     </Col>
@@ -48,7 +48,7 @@ class InvoiceEdit extends React.Component {
                     <Col>
                         <FormGroup>
                             <Label for="shipper">Shipper</Label>
-                            <Field className="form-control" name="shipper" component="input" type="text" placeholder="Shipper's Name and Address" />
+                            <Field className="form-control" name="shipper" component="textarea" type="textarea" placeholder="Shipper's Name and Address" />
                         </FormGroup>
                     </Col>
 
@@ -57,7 +57,7 @@ class InvoiceEdit extends React.Component {
                     <Col>
                         <FormGroup>
                             <Label for="consignee">Consignee</Label>
-                            <Field className="form-control" name="consignee" component="input" type="text" placeholder="Consignee's Name and Address" />
+                            <Field className="form-control" name="consignee" component="textarea" type="textarea" placeholder="Consignee's Name and Address" />
                         </FormGroup>
                     </Col>
                 </Row>
@@ -89,7 +89,7 @@ class InvoiceEdit extends React.Component {
 
                         <FormGroup>
                             <Label for="description_commodity">Description_Commodity </Label>
-                            <Field className="form-control" name="description_commodity" component="input" type="textarea" placeholder="Check In / Check Out" />
+                            <Field className="form-control" name="description_commodity" component="textarea" type="textarea" placeholder="Check In / Check Out" />
                         </FormGroup>
                     </Col>
                     <Col md={2}>
@@ -124,5 +124,5 @@ class InvoiceEdit extends React.Component {
 
 
 export default reduxForm({
-    form: 'invoiceCreate',
+    form: 'invoiceEdit',
 })(InvoiceEdit)

@@ -6,7 +6,7 @@ import invoiceReducer from './invoicesReducer';
 
 export default combineReducers({
     invoices: invoiceReducer, 
-    form: formReducer
+    form: formReducer,
     // businesses,
     // drivers
 })
