@@ -92,7 +92,7 @@ let InvoiceCreate = props => {
                         <Field className="form-control" name="DriverId" component="select" placeholder="Driver's Name" >
                             <option></option>
                             <option value="1">Cindy</option>
-                            <option value="Daniel">Daniel</option>
+                            <option value="2">Daniel</option>
                         </Field>
 
                     </FormGroup>

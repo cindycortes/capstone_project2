@@ -84,14 +84,14 @@ export const createInvoice = newInvoice => dispatch => {
 }
 
 
-export const editInvoice = (id, formValues) => dispatch => {
+export const editInvoice = id => dispatch => {
 
-    axios.put(`http://localhost:5000/api/invoices/${id}`, formValues)
+    axios.put(`http://localhost:5000/api/invoices/${id}`)
 
         .then(invoice => {
             dispatch({
                 type: EDIT_INVOICE,
-                payload: invoice.data
+                payload: invoice
             })
         })
         .catch(err => {
