@@ -9,8 +9,10 @@ import SingleInvoice from './components/SingleInvoice';
 import InvoiceEdit from './components/invoices/InvoiceEdit';
 import Login from './components/auth/Login';
 // import Register from './components/auth/Register';
+// import WizardForm from './components/invoiceWizard/WizardForm';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import WizardForm from './components/invoiceWizard/WizardForm';
 
 
 
@@ -27,6 +29,7 @@ class App extends Component {
           <Route path="/invoice/new" component={InvoiceCreate} />
           <Route path="/invoice/edit" component={InvoiceEdit} />
           <Route path="/login" component={Login} />
+          <Route path="/wizard" component={WizardForm} />
           {/* <Route path="/register" component={Register} /> */}
 
           </Switch>

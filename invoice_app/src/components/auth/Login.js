@@ -4,7 +4,7 @@ import { Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'react
 export default class Login extends React.Component {
   render() {
     return (
-      <Form>
+      <Form className="container">
         <Row form>
           <Col md={6}>
             <FormGroup>

@@ -4,6 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 // import { createInvoice } from '../../redux/actions/invoiceAction';
 import { Form, FormGroup, Label, Row, Col } from 'reactstrap';
 import axios from 'axios';
+import showResults from '../invoiceWizard/showResults';
 
 
 
@@ -18,11 +19,10 @@ const submitToServer = () => {
 const InvoiceCreate = props => {
 
 
-
-    const { handleSubmit } = props;
+    const { handleSubmit, submitting, onSubmit } = props;
 
     return (
-        <Form className="container" onSubmit={handleSubmit(submitToServer)}>
+        <Form className="container" onSubmit={handleSubmit(handleSubmit)}>
             <h1>Add New Invoice </h1>
             <Row>
                 <Col md={6}>
@@ -117,11 +117,9 @@ const InvoiceCreate = props => {
                 </Col>
             </Row>
 
-            <button type="submit">Submit</button>
+            <button type="submit" disabled={submitting}>Submit</button>
         </Form>
     )
-
-
 
 }
 
@@ -129,4 +127,6 @@ const InvoiceCreate = props => {
 
 export default reduxForm({
     form: 'invoiceCreate',
+    destroyOnUnmount: false
 })(InvoiceCreate) 
+
