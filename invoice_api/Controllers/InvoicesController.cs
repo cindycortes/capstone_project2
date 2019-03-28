@@ -50,7 +50,7 @@ namespace invoice_api.Controllers
             // Set Dates
             newInvoice.CreatedAt = DateTime.Now;
             newInvoice.UpdatedAt = DateTime.Now;
-
+            Console.WriteLine(newInvoice.ToString());
             //Execute insert
             _context.Invoices.Add(newInvoice);
             _context.SaveChanges();

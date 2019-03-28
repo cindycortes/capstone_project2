@@ -75,8 +75,8 @@ export const deleteInvoice = id => dispatch => {
 
 
 
-export const createInvoice = id => dispatch => {
-    const response = axios.post(`http://localhost:5000/api/invoices`)
+export const createInvoice = newInvoice => dispatch => {
+    const response = axios.post(`http://localhost:5000/api/invoices`, newInvoice)
     dispatch({
         type: CREATE_INVOICE,
         payload: response.data

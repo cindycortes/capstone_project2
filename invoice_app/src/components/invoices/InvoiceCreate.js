@@ -1,48 +1,52 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-// import { connect } from 'react-redux';
-// import { createInvoice } from '../../redux/actions/invoiceAction';
+import { connect } from 'react-redux';
+import { createInvoice } from '../../redux/actions/invoiceAction';
 import { Form, FormGroup, Label, Row, Col } from 'reactstrap';
-import axios from 'axios';
-import showResults from '../invoiceWizard/showResults';
 
 
 
-const submitToServer = () => {
-    try {
-        return axios.post(`http://localhost:5000/api/invoices`)
-    } catch (error) {
-        console.log(error)
+
+
+let InvoiceCreate = props => {
+
+    function submitNewInvoice (values) {
+        console.log("values", values);
+        props.createInvoice(values)
     }
-}
-
-const InvoiceCreate = props => {
 
 
-    const { handleSubmit, submitting, onSubmit } = props;
+    const { handleSubmit, submitting } = props;
 
     return (
-        <Form className="container" onSubmit={handleSubmit(handleSubmit)}>
+        <Form className="container" onSubmit={handleSubmit(submitNewInvoice)}>
             <h1>Add New Invoice </h1>
             <Row>
-                <Col md={6}>
+            <Col md={2}>
                     <FormGroup>
-                        <Label for="business">Business Name</Label>
-                        <Field className="form-control" name="business" component="input" type="text" placeholder="Business Name" />
+                        <Label for="UserId">UserId</Label>
+                        <Field className="form-control" name="UserId" component="input" type="text" placeholder="UserId" />
+
+                    </FormGroup>
+                </Col>
+                <Col md={4}>
+                    <FormGroup>
+                        <Label for="BusinessId">Business Name</Label>
+                        <Field className="form-control" name="BusinessId" component="input" type="text" placeholder="Business Name" />
 
                     </FormGroup>
                 </Col>
                 <Col md={3}>
                     <FormGroup>
-                        <Label for="date">Date</Label>
-                        <Field className="form-control" name="date" component="input" type="date" label="date" />
+                        <Label for="Date">Date</Label>
+                        <Field className="form-control" name="Date" component="input" type="date" label="date" />
                     </FormGroup>
                 </Col>
                 <Col md={3}>
 
                     <FormGroup>
-                        <Label for="invoiceNumber">Invoice No.</Label>
-                        <Field className="form-control" name="invoiceNumber" component="input" type="text" placeholder="Invoice Number" />
+                        <Label for="InvoiceNumber">Invoice No.</Label>
+                        <Field className="form-control" name="InvoiceNumber" component="input" type="text" placeholder="Invoice Number" />
                     </FormGroup>
                 </Col>
 
@@ -52,8 +56,8 @@ const InvoiceCreate = props => {
 
                 <Col>
                     <FormGroup>
-                        <Label for="shipper">Shipper</Label>
-                        <Field className="form-control" name="shipper" component="textarea" type="text" placeholder="Shipper's Name and Address" />
+                        <Label for="Shipper">Shipper</Label>
+                        <Field className="form-control" name="Shipper" component="textarea" type="text" placeholder="Shipper's Name and Address" />
                     </FormGroup>
                 </Col>
 
@@ -61,8 +65,8 @@ const InvoiceCreate = props => {
             <Row>
                 <Col>
                     <FormGroup>
-                        <Label for="consignee">Consignee</Label>
-                        <Field className="form-control" name="consignee" component="textarea" type="text" placeholder="Consignee's Name and Address" />
+                        <Label for="Consignee">Consignee</Label>
+                        <Field className="form-control" name="Consignee" component="textarea" type="text" placeholder="Consignee's Name and Address" />
                     </FormGroup>
                 </Col>
             </Row>
@@ -70,20 +74,20 @@ const InvoiceCreate = props => {
             <Row>
                 <Col md={3}>
                     <FormGroup>
-                        <Label for="dateShipped">Date Shipped: </Label>
-                        <Field className="form-control" name="dateShipped" component="input" type="date" label="dateShipped" />
+                        <Label for="DateShipped">Date Shipped: </Label>
+                        <Field className="form-control" name="DateShipped" component="input" type="date" label="dateShipped" />
                     </FormGroup>
                 </Col>
                 <Col md={3}>
                     <FormGroup>
-                        <Label for="driver">Driver </Label>
-                        <Field className="form-control" name="driver" component="input" type="text" placeholder="Driver's Name" />
+                        <Label for="DriverId">Driver </Label>
+                        <Field className="form-control" name="DriverId" component="input" type="text" placeholder="Driver's Name" />
                     </FormGroup>
                 </Col>
                 <Col md={6}>
                     <FormGroup>
-                        <Label for="shippersNumbers">Shippers No. : </Label>
-                        <Field className="form-control" name="shippersNumbers" component="input" type="text" placeholder="Order #" />
+                        <Label for="ShippersNumbers">Shippers No. : </Label>
+                        <Field className="form-control" name="ShippersNumbers" component="input" type="text" placeholder="Order #" />
                     </FormGroup>
                 </Col>
 
@@ -93,26 +97,26 @@ const InvoiceCreate = props => {
                 <Col md={6}>
 
                     <FormGroup>
-                        <Label for="description_commodity">Description_Commodity </Label>
-                        <Field className="form-control" name="description_commodity" component="textarea" type="textarea" placeholder="Check In / Check Out" />
+                        <Label for="Description_Commodity">Description_Commodity </Label>
+                        <Field className="form-control" name="Description_Commodity" component="textarea" type="textarea" placeholder="Check In / Check Out" />
                     </FormGroup>
                 </Col>
                 <Col md={2}>
                     <FormGroup>
-                        <Label for="weight_quantity">Weight / Quantity </Label>
-                        <Field className="form-control" name="weight_quantity" component="input" type="text" placeholder="weight_quantity" />
+                        <Label for="Weight_Quantity">Weight / Quantity </Label>
+                        <Field className="form-control" name="Weight_Quantity" component="input" type="text" placeholder="weight_quantity" />
                     </FormGroup>
                 </Col>
                 <Col md={2}>
                     <FormGroup>
-                        <Label for="rate">Rate </Label>
-                        <Field className="form-control" name="rate" component="input" type="text" placeholder="rate" />
+                        <Label for="Rate">Rate </Label>
+                        <Field className="form-control" name="Rate" component="input" type="text" placeholder="rate" />
                     </FormGroup>
                 </Col>
                 <Col md={2}>
                     <FormGroup>
-                        <Label for="charges">Charges </Label>
-                        <Field className="form-control" name="charges" component="input" type="text" placeholder="charges" />
+                        <Label for="Charges">Charges </Label>
+                        <Field className="form-control" name="Charges" component="input" type="text" placeholder="charges" />
                     </FormGroup>
                 </Col>
             </Row>
@@ -125,8 +129,9 @@ const InvoiceCreate = props => {
 
 //initial values
 
-export default reduxForm({
+InvoiceCreate = reduxForm({
     form: 'invoiceCreate',
     destroyOnUnmount: false
 })(InvoiceCreate) 
 
+export default connect(null, {createInvoice})(InvoiceCreate)

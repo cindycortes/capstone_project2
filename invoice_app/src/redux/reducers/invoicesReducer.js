@@ -50,11 +50,10 @@ export default function (state = initialState, action) {
             };
 
         case CREATE_INVOICE:
-            return 
-            // return {
-            //     ...state,
-            //     invoice: action.payload
-            // };
+            return {
+                ...state,
+                invoice: action.payload
+            };
 
         case EDIT_INVOICE:
             return { ...state, [action.payload.id]: action.payload }; //key interpolation syntax
@@ -67,16 +66,16 @@ export default function (state = initialState, action) {
             }
         
         case DELETE_INVOICE_SUCCESS:
-            return  _.omit(state, action.payload)
+            // return  _.omit(state, action.payload)
                
-            // const id = action.payload
-            // return {
-            //     ...state,
-            //     invoiceList: state.invoiceList.filter(item => item.id !== id),
-            //     // invoices.filter((invoice) => invoice.id !== action.id)
-            //     deletingInvoice: false
+            const id = action.payload
+            return {
+                ...state,
+                invoiceList: state.invoiceList.filter(item => item.id !== id),
+                // invoices.filter((invoice) => invoice.id !== action.id)
+                deletingInvoice: false
 
-            // }
+            }
         case DELETE_INVOICE_FAILED:
             return {
                 ...state,
