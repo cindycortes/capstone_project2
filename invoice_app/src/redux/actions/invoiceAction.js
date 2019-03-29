@@ -52,6 +52,24 @@ export const selectInvoice = id => dispatch => {
 
 }
 
+export const editInvoice = (id, formValues) => dispatch => {
+    console.log('you are currently viewing edit id:', id)
+    axios.put(`http://localhost:5000/api/invoices/${id}`, formValues)
+
+        .then(response => {
+            dispatch({
+                type: EDIT_INVOICE,
+                payload: response.data
+                
+            })
+        })
+        .catch(err => {
+            console.log(err)
+        })
+
+
+}
+
 export const deleteInvoice = id => dispatch => {
     console.log('you clicked on deleteinvoice id:', id)
     dispatch({
@@ -84,21 +102,5 @@ export const createInvoice = newInvoice => dispatch => {
 }
 
 
-export const editInvoice = id => dispatch => {
-
-    axios.put(`http://localhost:5000/api/invoices/${id}`)
-
-        .then(invoice => {
-            dispatch({
-                type: EDIT_INVOICE,
-                payload: invoice
-            })
-        })
-        .catch(err => {
-            console.log(err)
-        })
-
-
-}
 
 
