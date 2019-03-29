@@ -2,6 +2,7 @@ import {
     FETCH_INVOICES_SUCCESS,
     FETCH_INVOICES_PENDING,
     FETCH_INVOICES_FAILED,
+    FILTER_INVOICES,
     INVOICE_SELECTED,
     CREATE_INVOICE,
     EDIT_INVOICE,
@@ -35,6 +36,15 @@ export const fetchInvoices = () => dispatch => {
         })
 }
 
+export const filterInvoices = filterObj => {
+    return dispatch => {
+        dispatch({
+            type: FILTER_INVOICES,
+            payload: filterObj
+        })
+    }
+}
+
 
 export const selectInvoice = id => dispatch => {
     console.log("you clicked on invoice:", id)
@@ -60,7 +70,7 @@ export const editInvoice = (id, formValues) => dispatch => {
             dispatch({
                 type: EDIT_INVOICE,
                 payload: response.data
-                
+
             })
         })
         .catch(err => {
@@ -100,6 +110,7 @@ export const createInvoice = newInvoice => dispatch => {
         payload: response.data
     })
 }
+
 
 
 

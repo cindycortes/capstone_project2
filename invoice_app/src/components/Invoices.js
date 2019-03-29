@@ -5,6 +5,7 @@ import { fetchInvoices, selectInvoice, deleteInvoice } from '../redux/actions/in
 import PropTypes from 'prop-types';
 import InvoiceEdit from './invoices/InvoiceEdit';
 import Pagination from './Pagination';
+import SearchBar from './SearchBar';
 
 class Invoices extends Component {
 
@@ -48,6 +49,7 @@ class Invoices extends Component {
                         <div className="container">
                             <h2>List of Invoices</h2>
                             <Button href="/invoice/new" className="my-3" color="primary">Add Invoice</Button>
+                            <SearchBar />
                             <Table>
                                 <thead>
                                     <tr>
