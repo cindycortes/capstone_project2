@@ -20,7 +20,9 @@ const initialState = {
     invoiceEdit:[],
     invoice: {}, // single invoice that we add
     fetchingInvoices: false,
-    deletingInvoice: false
+    deletingInvoice: false,
+    type: "name",
+    filterPhrase: ""
 
 }
 
@@ -44,6 +46,12 @@ export default function (state = initialState, action) {
                 ...state,
                 fetchingInvoices: true
             }
+        case FILTER_INVOICES:
+            return {
+                ...state,
+                type: action.payload.type,
+                filterPhrase: action.payload.filterPhrase
+            }    
 
         case INVOICE_SELECTED:
             return {

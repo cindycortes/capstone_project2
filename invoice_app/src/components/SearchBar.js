@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Form, FormGroup, Label, Input, Row, Col } from 'reactstrap'
+import { connect } from 'react-redux';
+import { filterInvoices } from '../redux/actions/invoiceAction';
 
 class SearchBar extends Component {
 
@@ -55,4 +57,21 @@ class SearchBar extends Component {
     }
 }
 
-export default SearchBar
+const mapStateToProps = state => {
+    return {
+        type: state.invoices.type,
+        filterPhrase: state.invoices.filterPhrase
+    }
+}
+
+const maptDispatchToProps = dispatch => {
+    return {
+        filterInvoices: filterObj => {
+            dispatch(
+                filterInvoices(filterObj)
+            )
+        }
+    }
+}
+
+export default connect(mapStateToProps, maptDispatchToProps) (SearchBar)
