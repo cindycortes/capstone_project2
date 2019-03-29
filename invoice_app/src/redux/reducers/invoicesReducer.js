@@ -16,6 +16,7 @@ import {
 const initialState = {
     invoiceList: [],
     invoiceSelected: [],
+    invoiceEdit:[],
     invoice: {}, // single invoice that we add
     fetchingInvoices: false,
     deletingInvoice: false

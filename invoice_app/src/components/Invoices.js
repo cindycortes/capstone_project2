@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import InvoiceEdit from './invoices/InvoiceEdit';
 import { Button, ListGroup, ListGroupItem, Table, Container, Row, Col } from 'reactstrap'
 import { connect } from 'react-redux';
 import { fetchInvoices, selectInvoice, deleteInvoice } from '../redux/actions/invoiceAction';
 import PropTypes from 'prop-types';
+import InvoiceEdit from './invoices/InvoiceEdit';
 import Pagination from './Pagination';
 
 class Invoices extends Component {
@@ -15,7 +15,7 @@ class Invoices extends Component {
 
 
     renderList() {
-        console.log('props in invoices:', this.props);
+        // console.log('props in invoices:', this.props);
         return this.props.invoices.map((invoice) => {
 
             return (
