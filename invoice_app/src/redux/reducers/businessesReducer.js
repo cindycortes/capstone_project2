@@ -10,7 +10,7 @@ export default businesses = (state = initState, action) => {
         case 'GET_BUSINESS':
             return [...state, action.payload]
 
-        case 'ADD_BUSINESS':
+        case 'CREATE_BUSINESS':
             return [...state, action.payload]
 
     

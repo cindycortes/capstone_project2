@@ -8,6 +8,7 @@ import InvoiceCreate from './components/invoices/InvoiceCreate';
 import SingleInvoice from './components/SingleInvoice';
 import InvoiceEdit from './components/invoices/InvoiceEdit';
 import Login from './components/auth/Login';
+import CreateDashboard from './components/invoices/CreateDashboard'
 // import Register from './components/auth/Register';
 // import WizardForm from './components/invoiceWizard/WizardForm';
 
@@ -26,7 +27,8 @@ class App extends Component {
           <Navbar />
           <Switch>
           <Route exact path="/" component={Dashboard} />
-          <Route path="/invoice/new" component={InvoiceCreate} />
+          {/* <Route path="/invoice/new" component={InvoiceCreate} /> */}
+          <Route path="/invoice/new" component={CreateDashboard} />
           <Route path="/invoice/edit" component={InvoiceEdit} />
           <Route path="/login" component={Login} />
           <Route path="/wizard" component={WizardForm} />

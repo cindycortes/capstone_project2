@@ -17,6 +17,7 @@ class Invoices extends Component {
 
     renderList() {
         // console.log('props in invoices:', this.props);
+      
         return this.props.invoices.map((invoice) => {
 
             return (
@@ -62,10 +63,11 @@ class Invoices extends Component {
                                 </thead>
                                 <tbody>
                                     {this.renderList()}
+                                   
 
                                 </tbody>
                             </Table>
-                            <Pagination />
+                            {/* <Pagination /> */}
                         </div>
                     </Col>
 

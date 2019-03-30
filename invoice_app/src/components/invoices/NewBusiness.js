@@ -1,55 +1,17 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm } from redux-form;
 import { connect } from 'react-redux';
-import { createInvoice } from '../../redux/actions/invoiceAction';
 import { Form, FormGroup, Label, Row, Col } from 'reactstrap';
+import { createBusiness } from '../../redux/actions/businessesAction';
 
 
+let NewBusiness = props => {
 
-
-let InvoiceCreate = props => {
-
-    function submitNewInvoice(values) {
-        console.log("values", values);
-        props.createInvoice(values)
-    }
-
-
-    const { handleSubmit, submitting } = props;
 
     return (
-        
-        <Form className="container" onSubmit={handleSubmit(submitNewInvoice)}>
-            <h1>Add New Invoice </h1>
+        <Form className="container">
+            <h1>Add New Business </h1>
             <Row>
-                <Col md={2}>
-                    <FormGroup>
-                        <Label for="UserId">UserId</Label>
-                        <Field className="form-control" name="UserId" component="select" placeholder="UserId">
-                            <option></option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                        </Field>
-
-
-                    </FormGroup>
-                </Col>
-                <Col md={4}>
-                    <FormGroup>
-                        <Label for="BusinessId">Business Name</Label>
-                        <Field className="form-control" name="BusinessId" component="select" placeholder="Business Name">
-                            <option></option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                        </Field>
-                    </FormGroup>
-                </Col>
-                <Col md={3}>
-                    <FormGroup>
-                        <Label for="Date">Date</Label>
-                        <Field className="form-control" name="Date" component="input" type="date" label="date" />
-                    </FormGroup>
-                </Col>
                 <Col md={3}>
 
                     <FormGroup>
@@ -137,14 +99,11 @@ let InvoiceCreate = props => {
             <button type="submit" disabled={submitting}>Submit</button>
         </Form>
     )
-
 }
 
-//initial values
-
-InvoiceCreate = reduxForm({
-    form: 'invoiceCreate',
+NewBusiness = reduxForm({
+    form: 'newBusiness',
     destroyOnUnmount: false
-})(InvoiceCreate)
+})(NewBusiness)
 
-export default connect(null, { createInvoice })(InvoiceCreate)
+export default connect(null, {createBusiness})(NewBusiness)

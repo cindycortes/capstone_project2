@@ -44,6 +44,7 @@ class SearchBar extends Component {
                                     <option value="driver"> Driver</option>
                                     <option value="shipper"> Shipper</option>
                                     <option value="consignee"> Consignee</option>
+                                    <option value="">All</option>
 
                                 </Input>
                             </FormGroup>
