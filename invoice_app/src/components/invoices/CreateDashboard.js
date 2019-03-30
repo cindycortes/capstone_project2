@@ -12,7 +12,8 @@ class CreateDashboard extends React.Component {
                         {/* <Tabs /> */}
                     </Col>
                     <Col md={8}>
-                        <h2> Hello from Create Dashboard</h2>
+                        {/* <h2> </h2> */}
+                        <br/>
                         <Tabs />
                     </Col>
                     <Col md={2}>
