@@ -3,13 +3,15 @@ import {
     FETCH_BUSINESSES_PENDING,
     FETCH_BUSINESSES_SUCCESS,
     FETCH_BUSINESSES_FAILED, 
-    CREATE_BUSINESS_FAILED
+    CREATE_BUSINESS_FAILED,
+    BUSINESS_SELECTED
 } from '../actions/types';
 
 const initState = {
     businessList: [], 
-    business: {},
-    fetchingBusinesses: false
+    business: {}, // create new business
+    fetchingBusinesses: false, 
+    businessSelected: []
 }
 
 export default function (state = initState, action) {
@@ -40,14 +42,12 @@ export default function (state = initState, action) {
             return {
                 ...state
             }    
-            
+        case BUSINESS_SELECTED:
+            return {
+                ...state,
+                businessSelected: action.payload
+            }
 
-        
-        case 'GET_BUSINESS':
-            return [...state, action.payload]
-
-
-    
         default:
             return state
     }

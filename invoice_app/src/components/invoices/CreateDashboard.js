@@ -9,10 +9,10 @@ class CreateDashboard extends React.Component {
             <div>
                 <Row>
                     <Col md={2}>
-                        {/* <Tabs /> */}
+                       
                     </Col>
                     <Col md={8}>
-                        {/* <h2> </h2> */}
+                        
                         <br/>
                         <Tabs />
                     </Col>

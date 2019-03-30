@@ -30,7 +30,7 @@ export default class Tabs extends React.Component {
               className={classnames({ active: this.state.activeTab === '1' })}
               onClick={() => { this.toggle('1'); }}
             >
-             Step 1: Create Shipper / Consignee
+             Step 1: Create New Shipper / Consignee
             </NavLink>
           </NavItem>
           <NavItem>

@@ -3,8 +3,9 @@ import {
     FETCH_BUSINESSES_PENDING,
     FETCH_BUSINESSES_SUCCESS,
     FETCH_BUSINESSES_FAILED,
-    CREATE_BUSINESS_FAILED
-   
+    CREATE_BUSINESS_FAILED,
+    BUSINESS_SELECTED
+
 } from './types';
 
 import Axios from "axios";
@@ -30,17 +31,17 @@ export const fetchBusinesses = () => dispatch => {
 }
 
 
-export const getBusiness = id => {
-    return (dispatch) => {
-        Axios.get(`http://localhost:5000/api/business/${id}`)
-            .then(response => {
-                dispatch({
-                    // type: 
-                    // payload: response
-                })
+export const getBusiness = id => dispatch => {
+    console.log("You clicked on business Id: ", id)
+    Axios.get(`http://localhost:5000/api/business/${id}`)
+        .then(response => {
+            dispatch({
+                type: BUSINESS_SELECTED,
+                payload: response.data
             })
-    }
+        })
 }
+
 
 export const createBusiness = newBusiness => dispatch => {
     const response = Axios.post(`http://localhost:5000/api/business/`, newBusiness)
@@ -48,10 +49,5 @@ export const createBusiness = newBusiness => dispatch => {
         type: CREATE_BUSINESS_SUCCESS,
         payload: response.data
     })
-    .catch(error => {
-        dispatch({
-            type: CREATE_BUSINESS_FAILED,
-            payload: "error in creating new business",error
-        })
-    })
+       
 }
