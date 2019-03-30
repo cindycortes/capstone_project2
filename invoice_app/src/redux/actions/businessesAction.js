@@ -2,7 +2,9 @@ import {
     CREATE_BUSINESS_SUCCESS,
     FETCH_BUSINESSES_PENDING,
     FETCH_BUSINESSES_SUCCESS,
-    GET_BUSINESS_LIST
+    FETCH_BUSINESSES_FAILED,
+    CREATE_BUSINESS_FAILED
+   
 } from './types';
 
 import Axios from "axios";
@@ -19,6 +21,12 @@ export const fetchBusinesses = () => dispatch => {
                 payload: response.data
             })
         })
+        .catch(error => {
+            dispatch({
+                type: FETCH_BUSINESSES_FAILED,
+                payload: "Error in fetching businesses"
+            })
+        })
 }
 
 
@@ -27,8 +35,8 @@ export const getBusiness = id => {
         Axios.get(`http://localhost:5000/api/business/${id}`)
             .then(response => {
                 dispatch({
-                    type: GET_BUSINESS_LIST,
-                    payload: response
+                    // type: 
+                    // payload: response
                 })
             })
     }
@@ -39,5 +47,11 @@ export const createBusiness = newBusiness => dispatch => {
     dispatch({
         type: CREATE_BUSINESS_SUCCESS,
         payload: response.data
+    })
+    .catch(error => {
+        dispatch({
+            type: CREATE_BUSINESS_FAILED,
+            payload: "error in creating new business",error
+        })
     })
 }
