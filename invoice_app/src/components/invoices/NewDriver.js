@@ -3,6 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { Form, FormGroup, Label, Row, Col } from 'reactstrap';
 import { createDriver } from '../../redux/actions/driversAction';
+import ModalButton from '../toggle/ModalButton';
 
 
 let NewDriver = props => {
@@ -54,7 +55,7 @@ let NewDriver = props => {
 
             </Row>
             <Row>
-
+                <ModalButton className="btn btn-primary btn-lg" />
             </Row>
 
 

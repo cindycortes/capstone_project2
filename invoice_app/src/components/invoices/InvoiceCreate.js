@@ -169,7 +169,7 @@ let InvoiceCreate = props => {
                 </Col>
             </Row>
 
-            <button type="submit" class="btn btn-primary btn-lg"disabled={submitting}>Submit</button>
+            <button type="submit" className="btn btn-primary btn-lg" disabled={submitting}>Submit</button>
         </Form>
     )
 

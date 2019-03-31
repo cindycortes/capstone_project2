@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import InvoiceEdit from './invoices/InvoiceEdit';
 import Pagination from './Pagination';
 import SearchBar from './SearchBar';
+import ModalButton from '../components/toggle/ModalButton';
 
 class Invoices extends Component {
 
@@ -30,6 +31,9 @@ class Invoices extends Component {
                     <td>
                         <Button color="success" onClick={() => this.props.selectInvoice(invoice.id)}> Select </Button>
                         <Button color="danger" onClick={() => this.props.deleteInvoice(invoice.id)}>Delete</Button>
+                        {/* <ModalButton /> */}
+                        {/* <br/> */}
+                        
                     </td>
 
                     
