@@ -18,7 +18,15 @@ let InvoiceCreate = props => {
 
 
     const { handleSubmit, submitting } = props;
-    console.log("businessList from invoice create:", props.businesses)
+    console.log("businessList from invoice create:", props.business)
+
+    const businessList = props.business.map((bus) => {
+        return (
+            <option key={bus.id} value={bus.businessName}>{bus.businessName}
+                
+            </option>
+        )
+    })
 
     return (
 
@@ -39,9 +47,10 @@ let InvoiceCreate = props => {
                 </Col>
                 <Col md={4}>
                     <FormGroup>
-                        <Label for="BusinessId">Business Name</Label>
-                        <Field className="form-control" name="BusinessId" component="select" placeholder="Business Name">
+                        <Label for="BusinessName">Business Name</Label>
+                        <Field className="form-control" name="BusinessName" component="select" placeholder="Business Name">
                             <option></option>
+                            {businessList}
                             <option value="1">JJCortesTrucking</option>
                             <option value="2">2</option>
                         </Field>
