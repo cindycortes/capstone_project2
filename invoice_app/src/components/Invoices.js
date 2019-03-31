@@ -7,6 +7,7 @@ import InvoiceEdit from './invoices/InvoiceEdit';
 import Pagination from './Pagination';
 import SearchBar from './SearchBar';
 import ModalButton from '../components/toggle/ModalButton';
+import SelectedInvoice from './invoices/SelectedInvoice';
 
 class Invoices extends Component {
 
@@ -85,7 +86,8 @@ class Invoices extends Component {
 
                             <Row>
 
-                                <InvoiceEdit />
+                                {/* <InvoiceEdit /> */}
+                                <SelectedInvoice />
                             </Row>
 
 
