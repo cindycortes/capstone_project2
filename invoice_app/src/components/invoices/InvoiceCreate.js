@@ -110,11 +110,12 @@ let InvoiceCreate = props => {
                 </Col>
                 <Col md={3}>
                     <FormGroup>
-                        <Label for="DriverId">Driver </Label>
+                        <Label for="DriverId">Driver's Name </Label>
                         <Field className="form-control" name="DriverId" component="select" placeholder="Driver's Name" >
                             <option></option>
-                            <option value="1">Cindy</option>
-                            <option value="2">Daniel</option>
+                            {driversList}
+                            {/* <option value="1">Cindy</option>
+                            <option value="2">Daniel</option> */}
                         </Field>
 
                     </FormGroup>
