@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { createInvoice } from '../../redux/actions/invoiceAction';
+import { fetchBusinesses } from '../../redux/actions/businessesAction';
 import { Form, FormGroup, Label, Row, Col } from 'reactstrap';
 
 
@@ -9,6 +10,7 @@ import { Form, FormGroup, Label, Row, Col } from 'reactstrap';
 
 let InvoiceCreate = props => {
 
+    
     function submitNewInvoice(values) {
         console.log("values", values);
         props.createInvoice(values)
@@ -16,15 +18,16 @@ let InvoiceCreate = props => {
 
 
     const { handleSubmit, submitting } = props;
+    console.log("businessList from invoice create:", props.businesses)
 
     return (
-        
+
         <Form className="container" onSubmit={handleSubmit(submitNewInvoice)}>
             <h1>Add New Invoice </h1>
             <Row>
                 <Col md={2}>
                     <FormGroup>
-                        <Label for="UserId">Company</Label>
+                        <Label for="UserId">UserId</Label>
                         <Field className="form-control" name="UserId" component="select" placeholder="UserId">
                             <option></option>
                             <option value="1">1</option>
@@ -39,7 +42,7 @@ let InvoiceCreate = props => {
                         <Label for="BusinessId">Business Name</Label>
                         <Field className="form-control" name="BusinessId" component="select" placeholder="Business Name">
                             <option></option>
-                            <option value="1">1</option>
+                            <option value="1">JJCortesTrucking</option>
                             <option value="2">2</option>
                         </Field>
                     </FormGroup>
@@ -141,10 +144,15 @@ let InvoiceCreate = props => {
 }
 
 //initial values
+const mapStateToProps = state => {
+    return {
+        business: state.businesses.businessList
+    }
+}
 
 InvoiceCreate = reduxForm({
     form: 'invoiceCreate',
     destroyOnUnmount: false
 })(InvoiceCreate)
 
-export default connect(null, { createInvoice })(InvoiceCreate)
+export default connect(mapStateToProps, { createInvoice, fetchBusinesses })(InvoiceCreate)
