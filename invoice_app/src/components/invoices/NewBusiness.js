@@ -24,7 +24,7 @@ let NewBusiness = props => {
                         <Field className="form-control" name="businessName" component="input" type="text" placeholder="Business Name" />
                     </FormGroup>
                 </Col>
-                <Col md={3}>
+                <Col md={4}>
                     <FormGroup>
                         <Label for="businessNumber">Phone Number</Label>
                         <Field className="form-control" name="businessNumber" component="input" type="text" placeholder="Phone Number" />

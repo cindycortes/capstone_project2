@@ -2,44 +2,53 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { Form, FormGroup, Label, Row, Col } from 'reactstrap';
-import { createBusiness } from '../../redux/actions/businessesAction';
+import { createDriver } from '../../redux/actions/driversAction';
 
 
 let NewDriver = props => {
 
-    function submitNewBusiness(values) {
-        console.log("business Values", values);
-        props.createBusiness(values)
+    function submitNewDriver(values) {
+        console.log("drivers Values", values);
+        props.createDriver(values)
     }
 
     const { handleSubmit, submitting } = props;
     return (
-        <Form className="container" onSubmit={handleSubmit(submitNewBusiness)}>
-            <h1>Add New Business </h1>
+        <Form className="container" onSubmit={handleSubmit(submitNewDriver)}>
+            <h1>Add New Driver </h1>
             <Row>
                 <Col md={8}>
 
                     <FormGroup>
-                        <Label for="businessName">Business Name</Label>
-                        <Field className="form-control" name="businessName" component="input" type="text" placeholder="Business Name" />
+                        <Label for="name">Drivers Name</Label>
+                        <Field className="form-control" name="name" component="input" type="text" placeholder="Drivers Name" />
                     </FormGroup>
                 </Col>
-                <Col md={3}>
+                <Col md={4}>
                     <FormGroup>
-                        <Label for="businessNumber">Phone Number</Label>
-                        <Field className="form-control" name="businessNumber" component="input" type="text" placeholder="Phone Number" />
+                        <Label for="number">Phone Number</Label>
+                        <Field className="form-control" name="number" component="input" type="text" placeholder="Phone Number" />
                     </FormGroup>
 
                 </Col>
 
+            </Row>
+            <Row>
+                <Col md={12}>
+
+                    <FormGroup>
+                        <Label for="email">Email Address</Label>
+                        <Field className="form-control" name="email" component="input" type="text" placeholder="Email address" />
+                    </FormGroup>
+                </Col>
             </Row>
 
             <Row>
 
                 <Col>
                     <FormGroup>
-                        <Label for="businessAddress">Business Address</Label>
-                        <Field className="form-control" name="businessAddress" component="textarea" type="text" placeholder="Street, City, State, ZipCode" />
+                        <Label for="address">Address</Label>
+                        <Field className="form-control" name="address" component="textarea" type="text" placeholder="Street, City, State, ZipCode" />
                     </FormGroup>
                 </Col>
 
@@ -49,7 +58,7 @@ let NewDriver = props => {
             </Row>
 
 
-            <button type="submit" disabled={submitting}>Add Business</button>
+            <button type="submit" disabled={submitting}>Add Driver</button>
         </Form>
     )
 }
@@ -59,4 +68,4 @@ NewDriver = reduxForm({
     destroyOnUnmount: false
 })(NewDriver)
 
-export default connect(null, { createBusiness })(NewDriver)
+export default connect(null, { createDriver })(NewDriver)

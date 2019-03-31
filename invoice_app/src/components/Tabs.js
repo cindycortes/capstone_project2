@@ -3,6 +3,9 @@ import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, Ca
 import classnames from 'classnames';
 import InvoiceCreate from './invoices/InvoiceCreate';
 import NewBusiness from './invoices/NewBusiness';
+import NewDriver from './invoices/NewDriver';
+import BusinessToggle from './BussinessToggle';
+import DriversToggle from './DriversToggle';
 
 export default class Tabs extends React.Component {
   constructor(props) {
@@ -30,7 +33,7 @@ export default class Tabs extends React.Component {
               className={classnames({ active: this.state.activeTab === '1' })}
               onClick={() => { this.toggle('1'); }}
             >
-             Step 1: Create New Shipper / Consignee
+             Step 1: Create Business/Driver
             </NavLink>
           </NavItem>
           <NavItem>
@@ -58,8 +61,13 @@ export default class Tabs extends React.Component {
           <TabPane tabId="1">
             <Row>
               <Col sm="12">
-               
-                <NewBusiness />
+                <br/>
+                <BusinessToggle />
+                {/* <NewBusiness /> */}
+                <br/>
+                {/* <NewDriver /> */}
+                <DriversToggle />
+                
               </Col>
             </Row>
           </TabPane>
