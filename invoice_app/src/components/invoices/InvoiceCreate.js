@@ -24,7 +24,7 @@ let InvoiceCreate = props => {
             <Row>
                 <Col md={2}>
                     <FormGroup>
-                        <Label for="UserId">UserId</Label>
+                        <Label for="UserId">Company</Label>
                         <Field className="form-control" name="UserId" component="select" placeholder="UserId">
                             <option></option>
                             <option value="1">1</option>

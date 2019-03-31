@@ -4,8 +4,10 @@ import classnames from 'classnames';
 import InvoiceCreate from './invoices/InvoiceCreate';
 import NewBusiness from './invoices/NewBusiness';
 import NewDriver from './invoices/NewDriver';
-import BusinessToggle from './BussinessToggle';
-import DriversToggle from './DriversToggle';
+import BusinessToggle from './toggle/BusinessToggle';
+import DriversToggle from './toggle/DriversToggle';
+import InvoiceToggle from './toggle/InvoiceToggle';
+
 
 export default class Tabs extends React.Component {
   constructor(props) {
@@ -72,7 +74,8 @@ export default class Tabs extends React.Component {
             </Row>
           </TabPane>
           <TabPane tabId="2">
-            <InvoiceCreate />
+            <br/>
+            <InvoiceToggle />
           </TabPane>
           <TabPane tabId="3">
             <Row>
