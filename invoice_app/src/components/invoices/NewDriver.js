@@ -58,7 +58,7 @@ let NewDriver = props => {
             </Row>
 
 
-            <button type="submit" disabled={submitting}>Add Driver</button>
+            <button type="submit" className="btn btn-primary btn-lg" disabled={submitting}>Add Driver</button>
         </Form>
     )
 }

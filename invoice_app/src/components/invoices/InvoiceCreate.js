@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { createInvoice } from '../../redux/actions/invoiceAction';
 import { fetchBusinesses } from '../../redux/actions/businessesAction';
-import { fetchDrivers} from '../../redux/actions/driversAction';
+import { fetchDrivers } from '../../redux/actions/driversAction';
 
 import { Form, FormGroup, Label, Row, Col } from 'reactstrap';
 
@@ -12,7 +12,7 @@ import { Form, FormGroup, Label, Row, Col } from 'reactstrap';
 
 let InvoiceCreate = props => {
 
-    
+
     function submitNewInvoice(values) {
         console.log("values", values);
         props.createInvoice(values)
@@ -27,8 +27,14 @@ let InvoiceCreate = props => {
     const businessList = props.business.map((bus) => {
         return (
             <option key={bus.id} value={bus.id}>{bus.businessName}
-                
+
             </option>
+        )
+    })
+
+    const shippersList = props.business.map((bus) => {
+        return (
+            <option key={bus.id} value={bus.businessName}>{bus.businessName}</option>
         )
     })
 
@@ -59,10 +65,10 @@ let InvoiceCreate = props => {
                     <FormGroup>
                         <Label for="BusinessId">Business Name</Label>
                         <Field className="form-control" name="BusinessId" component="select" placeholder="Business Name">
-                            <option></option>
+                            <option>Select</option>
                             {businessList}
-                            <option value="1">JJCortesTrucking</option>
-                            <option value="2">2</option>
+                            {/* <option value="1">JJCortesTrucking</option>
+                            <option value="2">2</option> */}
                         </Field>
                     </FormGroup>
                 </Col>
@@ -87,7 +93,10 @@ let InvoiceCreate = props => {
                 <Col>
                     <FormGroup>
                         <Label for="Shipper">Shipper</Label>
-                        <Field className="form-control" name="Shipper" component="textarea" type="text" placeholder="Shipper's Name and Address" />
+                        <Field className="form-control" name="Shipper" component="textarea" placeholder="Shippers Name and Address">
+                            {/* <option>Select</option>
+                            {shippersList} */}
+                        </Field>
                     </FormGroup>
                 </Col>
 
@@ -96,7 +105,10 @@ let InvoiceCreate = props => {
                 <Col>
                     <FormGroup>
                         <Label for="Consignee">Consignee</Label>
-                        <Field className="form-control" name="Consignee" component="textarea" type="text" placeholder="Consignee's Name and Address" />
+                        <Field className="form-control" name="Consignee" component="textarea" placeholder="Consignee's Name and Address">
+                            {/* <option>Select</option>
+                            {businessList} */}
+                        </Field>
                     </FormGroup>
                 </Col>
             </Row>
@@ -112,7 +124,7 @@ let InvoiceCreate = props => {
                     <FormGroup>
                         <Label for="DriverId">Driver's Name </Label>
                         <Field className="form-control" name="DriverId" component="select" placeholder="Driver's Name" >
-                            <option></option>
+                            <option>Select</option>
                             {driversList}
                             {/* <option value="1">Cindy</option>
                             <option value="2">Daniel</option> */}
@@ -157,7 +169,7 @@ let InvoiceCreate = props => {
                 </Col>
             </Row>
 
-            <button type="submit" disabled={submitting}>Submit</button>
+            <button type="submit" class="btn btn-primary btn-lg"disabled={submitting}>Submit</button>
         </Form>
     )
 

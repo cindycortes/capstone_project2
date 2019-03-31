@@ -49,7 +49,7 @@ let NewBusiness = props => {
             </Row>
 
 
-            <button type="submit" disabled={submitting}>Add Business</button>
+            <button type="submit" className="btn btn-primary btn-lg" disabled={submitting}>Add Business</button>
         </Form>
     )
 }
