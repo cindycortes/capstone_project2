@@ -3,6 +3,8 @@ import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { createInvoice } from '../../redux/actions/invoiceAction';
 import { fetchBusinesses } from '../../redux/actions/businessesAction';
+import { fetchDrivers} from '../../redux/actions/driversAction';
+
 import { Form, FormGroup, Label, Row, Col } from 'reactstrap';
 
 
@@ -19,12 +21,20 @@ let InvoiceCreate = props => {
 
     const { handleSubmit, submitting } = props;
     console.log("businessList from invoice create:", props.business)
+    console.log("driversList from invoice create:", props.drivers)
+
 
     const businessList = props.business.map((bus) => {
         return (
-            <option key={bus.id} value={bus.businessName}>{bus.businessName}
+            <option key={bus.id} value={bus.id}>{bus.businessName}
                 
             </option>
+        )
+    })
+
+    const driversList = props.drivers.map((driver) => {
+        return (
+            <option key={driver.id} value={driver.id}>{driver.name}</option>
         )
     })
 
@@ -47,8 +57,8 @@ let InvoiceCreate = props => {
                 </Col>
                 <Col md={4}>
                     <FormGroup>
-                        <Label for="BusinessName">Business Name</Label>
-                        <Field className="form-control" name="BusinessName" component="select" placeholder="Business Name">
+                        <Label for="BusinessId">Business Name</Label>
+                        <Field className="form-control" name="BusinessId" component="select" placeholder="Business Name">
                             <option></option>
                             {businessList}
                             <option value="1">JJCortesTrucking</option>
@@ -155,7 +165,8 @@ let InvoiceCreate = props => {
 //initial values
 const mapStateToProps = state => {
     return {
-        business: state.businesses.businessList
+        business: state.businesses.businessList,
+        drivers: state.drivers.driversList
     }
 }
 

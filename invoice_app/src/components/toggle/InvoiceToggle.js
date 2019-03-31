@@ -3,12 +3,19 @@ import { UncontrolledCollapse, Button, CardBody, Card } from 'reactstrap';
 import InvoiceCreate from '../invoices/InvoiceCreate';
 import { connect } from 'react-redux';
 import {fetchBusinesses} from '../../redux/actions/businessesAction';
+import {fetchDrivers} from '../../redux/actions/driversAction';
+
 
 class InvoiceToggle extends Component {
   componentDidMount() {
     this.props.fetchBusinesses();
+    this.props.fetchDrivers()
   }
 
+  
+
+  
+  
   render() {
     return (
       <div>
@@ -30,4 +37,4 @@ class InvoiceToggle extends Component {
 
 }
 
-export default connect(null, {fetchBusinesses}) (InvoiceToggle);
+export default connect(null, {fetchBusinesses, fetchDrivers}) (InvoiceToggle);
