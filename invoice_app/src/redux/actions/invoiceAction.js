@@ -6,6 +6,7 @@ import {
     INVOICE_SELECTED,
     CREATE_INVOICE,
     EDIT_INVOICE,
+    EDIT_BUTTON,
     DELETE_INVOICE_FAILED,
     DELETE_INVOICE_PENDING,
     DELETE_INVOICE_SUCCESS
@@ -76,8 +77,15 @@ export const editInvoice = (id, formValues) => dispatch => {
         .catch(err => {
             console.log(err)
         })
+}
 
-
+export const editButton = (id) => dispatch => {
+    console.log("edit action button has been clicked", id)
+    dispatch({
+        type: EDIT_BUTTON,
+        payload: "edit button clicked", selectInvoice
+        
+    })
 }
 
 export const deleteInvoice = id => dispatch => {

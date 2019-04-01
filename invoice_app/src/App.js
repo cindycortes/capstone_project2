@@ -29,7 +29,7 @@ class App extends Component {
           <Route exact path="/" component={Dashboard} />
           {/* <Route path="/invoice/new" component={InvoiceCreate} /> */}
           <Route path="/invoice/new" component={CreateDashboard} />
-          <Route path="/invoice/edit" component={InvoiceEdit} />
+          <Route path="/invoice/edit/:id" component={InvoiceEdit} />
           <Route path="/login" component={Login} />
           <Route path="/wizard" component={WizardForm} />
           {/* <Route path="/register" component={Register} /> */}

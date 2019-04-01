@@ -5,7 +5,7 @@ import {
 } from 'reactstrap';
 
 import { connect } from 'react-redux';
-import { selectInvoice } from '../../redux/actions/invoiceAction';
+import { selectInvoice, editInvoice, editButton } from '../../redux/actions/invoiceAction';
 // import { invoiceNumber } from 'react-redux';
 
 class SelectedInvoice extends Component {
@@ -13,8 +13,19 @@ class SelectedInvoice extends Component {
 
     render() {
 
-        const { invoiceNumber, shipper, consignee, rate, charges, driver, date, dateShipped, business, description_Commodity, shippersNumber, weight_Quantity } = this.props.invoice
+        const { invoiceNumber, shipper, consignee, rate, charges, driver, date, dateShipped, business, description_Commodity, shippersNumber, weight_Quantity, id } = this.props.invoice
         console.log("Invoice has been selected:", this.props.invoice)
+        
+    //    function editButtonFunc () {
+    //         console.log("Edit Button Clicked");
+    //         this.props.editButton
+    //     }
+
+        // const {handleSubmit} = props;
+
+        console.log("props in edit Button", this.props)
+        const {editButton} = this.props
+        
         return (
             <div className="container">
 
@@ -83,10 +94,10 @@ class SelectedInvoice extends Component {
                     <CardBody>
                         <Row>
                             <Col>
-                                <Button href="/invoice/edit">Edit</Button>
+                                <Button onClick={editButton} >Edit</Button>
                             </Col>
                             <Col>
-                                <Button>Delete</Button>
+                                
 
                             </Col>
                         </Row>
@@ -101,8 +112,9 @@ class SelectedInvoice extends Component {
 
 const mapStateToProps = state => {
     return {
-        invoice: state.invoices.invoiceSelected
+        invoice: state.invoices.invoiceSelected,
+        
     }
 }
 
-export default connect(mapStateToProps, { selectInvoice })(SelectedInvoice)
+export default connect(mapStateToProps, { selectInvoice, editInvoice, editButton })(SelectedInvoice)

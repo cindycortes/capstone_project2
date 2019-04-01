@@ -94,9 +94,14 @@ class Invoices extends Component {
                             <br/>
 
                             <Row>
+                                <Col md={2}></Col>
+                                <Col md={8}>
+                                    <SelectedInvoice />
+                                
+                                </Col>
+                                <Col md={2}></Col>
 
                                 {/* <InvoiceEdit /> */}
-                                <SelectedInvoice />
                             </Row>
 
 

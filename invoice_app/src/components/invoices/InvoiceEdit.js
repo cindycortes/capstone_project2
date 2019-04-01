@@ -24,16 +24,21 @@ class InvoiceEdit extends Component {
         // if (!this.props.invoice) {
         //     return <div>No Invoice Selected</div>;
         // }
-        // console.log("hello from invoiceEdit line 25:", this.props.invoice.id)
+        console.log("hello from invoiceEdit line 25:", this.props.invoice)
         // const { businessId, invoiceNumber, date, dateShipped, driver, shippersNumbers, description_Commodity, weight_Quantity, charges, shipper, consignee, rate, userId } = this.props.invoice;
         const { handleSubmit, submitting } = this.props;
         // // console.log(this.props);
 
         return (
-            <div>
-                {/* <h2>Edit Invoice No. {invoiceNumber}</h2> */}
+            <div >
                 <Form className="container" onSubmit={handleSubmit(handleSubmit)}>
 
+                    <Row>
+                        <Col>
+
+                            <h2>Edit Invoice No. </h2>
+                        </Col>
+                    </Row>
                     <Row>
                         <Col md={2}>
                             <FormGroup>
@@ -147,7 +152,7 @@ class InvoiceEdit extends Component {
                         </Col>
                     </Row>
 
-                    <button type="submit" disabled={submitting}>Submit</button>
+                    <button type="submit" disabled={submitting}>Save</button>
                 </Form>
             </div>
         )
@@ -158,8 +163,8 @@ class InvoiceEdit extends Component {
 //initial values
 const mapStateToProps = state => {
     return {
-        invoice: state.invoices.invoiceSelected
-        // initialValues: state.invoices.invoiceSelected 
+        invoice: state.invoices.invoiceSelected,
+        initialValues: state.invoices.invoiceSelected 
     }
 }
 

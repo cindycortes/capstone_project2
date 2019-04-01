@@ -7,6 +7,7 @@ import {
     INVOICE_SELECTED,
     CREATE_INVOICE,
     EDIT_INVOICE,
+    EDIT_BUTTON,
     DELETE_INVOICE_FAILED,
     DELETE_INVOICE_PENDING,
     DELETE_INVOICE_SUCCESS
@@ -71,6 +72,12 @@ export default function (state = initialState, action) {
                 ...state,
                 invoiceSelected: action.payload
             }
+        case EDIT_BUTTON:
+            return {
+                ...state,
+                invoiceSelected: action.payload
+                
+            }    
 
         case DELETE_INVOICE_PENDING:
             return {
