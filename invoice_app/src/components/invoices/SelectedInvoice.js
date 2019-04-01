@@ -13,28 +13,31 @@ class SelectedInvoice extends Component {
 
     render() {
 
-        const { invoiceNumber, shipper, consignee, rate, charge, driver, date, dateShipped, business, description_Commodity, shippersNumber, weight_Quantity } = this.props.invoice
+        const { invoiceNumber, shipper, consignee, rate, charges, driver, date, dateShipped, business, description_Commodity, shippersNumber, weight_Quantity } = this.props.invoice
         console.log("Invoice has been selected:", this.props.invoice)
         return (
             <div className="container">
+                
 
                 <Card body outline color="secondary">
                     <CardHeader tag="h3">Invoice No: {invoiceNumber} </CardHeader>
-                    <CardBody >
+                    <CardBody>
                         <Row>
-                            <Col md={8}>
+                            <Col md={6}>
                                 <CardTitle>Company: {business} </CardTitle>
 
                             </Col>
-                            <Col md={4}>
+                            <Col md={6}>
                                 <CardTitle>Date: {date} </CardTitle>
+                                <CardTitle>Invoice #: {invoiceNumber}</CardTitle>
 
                             </Col>
                         </Row>
-                        <hr />
-                        <br />
+                       <hr />
+                       
                         <Row>
                             <Col>
+                                
                                 <CardTitle>Driver: {driver} </CardTitle>
 
                                 <CardTitle>Shipper: {shipper} </CardTitle>
@@ -60,7 +63,7 @@ class SelectedInvoice extends Component {
 
                             </Col>
                             <Col>
-                                <CardTitle>Charges: ${charge} </CardTitle>
+                                <CardTitle>Charges: ${charges} </CardTitle>
 
                             </Col>
                         </Row>
@@ -76,7 +79,7 @@ class SelectedInvoice extends Component {
                     <CardBody>
                         <Row>
                             <Col>
-                                <Button>Edit</Button>
+                                <Button href="/invoice/edit">Edit</Button>
                             </Col>
                             <Col>
                                 <Button>Delete</Button>
@@ -85,7 +88,7 @@ class SelectedInvoice extends Component {
                         </Row>
 
                     </CardBody>
-                    <CardFooter className="text-muted">Footer</CardFooter>
+                    <CardFooter className="text-muted">CC Trucking Co.</CardFooter>
                 </Card>
             </div>
         )

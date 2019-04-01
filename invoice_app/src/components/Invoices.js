@@ -30,7 +30,7 @@ class Invoices extends Component {
                     <td> {invoice.shipper}</td>
                     <td> {invoice.consignee}</td>
                     <td>
-                        <Button color="success" onClick={() => this.props.selectInvoice(invoice.id)}> Select </Button>
+                        <Button color="primary" onClick={() => this.props.selectInvoice(invoice.id)}> Select </Button>
                         <Button color="danger" onClick={() => this.props.deleteInvoice(invoice.id)}>Delete</Button>
                         {/* <ModalButton /> */}
                         {/* <br/> */}
@@ -53,8 +53,17 @@ class Invoices extends Component {
                 <Row>
                     <Col>
                         <div className="container">
-                            <h2>List of Invoices</h2>
-                            <Button href="/invoice/new" className="my-3" color="primary">Add Invoice</Button>
+                            <Row>
+                                <br/>
+                            </Row>
+                            <Row>
+                                <Col>
+                                
+                                    <Button href="/invoice/new" className="btn btn-primary btn-lg" color="success">Add Invoice</Button>
+                                </Col>
+
+                            </Row>
+                            <br/>
                             <SearchBar />
                             <Table>
                                 <thead>

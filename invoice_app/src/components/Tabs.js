@@ -7,6 +7,7 @@ import NewDriver from './invoices/NewDriver';
 import BusinessToggle from './toggle/BusinessToggle';
 import DriversToggle from './toggle/DriversToggle';
 import InvoiceToggle from './toggle/InvoiceToggle';
+import Invoices from './Invoices';
 
 
 export default class Tabs extends React.Component {
@@ -35,7 +36,7 @@ export default class Tabs extends React.Component {
               className={classnames({ active: this.state.activeTab === '1' })}
               onClick={() => { this.toggle('1'); }}
             >
-             Step 1: Create Business/Driver
+             Create Business/Driver
             </NavLink>
           </NavItem>
           <NavItem>
@@ -44,7 +45,7 @@ export default class Tabs extends React.Component {
               onClick={() => { this.toggle('2'); }}
               
             >
-              Step 2: Create Invoice
+            Create Invoice
             </NavLink>
           </NavItem>
           <NavItem>
@@ -79,7 +80,9 @@ export default class Tabs extends React.Component {
           </TabPane>
           <TabPane tabId="3">
             <Row>
-              <Col sm="6">
+              <br/>
+              {/* <Invoices /> */}
+              {/* <Col sm="6">
                 <Card body>
                   <CardTitle>Special Title Treatment</CardTitle>
                   <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
@@ -92,7 +95,7 @@ export default class Tabs extends React.Component {
                   <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
                   <Button>Go somewhere</Button>
                 </Card>
-              </Col>
+              </Col> */}
             </Row>
           </TabPane>
         </TabContent>
