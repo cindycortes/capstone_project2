@@ -19,6 +19,7 @@ const initialState = {
     invoiceList: [],
     invoiceSelected: [],
     invoiceEdit:[],
+    
     invoice: {}, // single invoice that we add
     fetchingInvoices: false,
     deletingInvoice: false,
@@ -70,7 +71,7 @@ export default function (state = initialState, action) {
             // return { ...state, [action.payload.id]: action.payload }; //key interpolation syntax
             return {
                 ...state,
-                invoiceSelected: action.payload
+                invoiceEdit: action.payload
             }
         case EDIT_BUTTON:
             return {

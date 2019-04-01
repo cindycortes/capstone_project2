@@ -32,7 +32,7 @@ export const fetchInvoices = () => dispatch => {
         .catch(error => {
             dispatch({
                 type: FETCH_INVOICES_FAILED,
-                payload: "Error in fetching invoices"
+                payload: "Error in fetching invoices", error
             })
         })
 }
@@ -83,7 +83,7 @@ export const editButton = (id) => dispatch => {
     console.log("edit action button has been clicked", id)
     dispatch({
         type: EDIT_BUTTON,
-        payload: "edit button clicked", selectInvoice
+        payload: "edit button clicked"
         
     })
 }
