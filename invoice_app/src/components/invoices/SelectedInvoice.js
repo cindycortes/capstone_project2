@@ -13,7 +13,7 @@ class SelectedInvoice extends Component {
 
     render() {
 
-        const { invoiceNumber, shipper, consignee, rate, charge, driver, date, dateShipped, business, description_Commodity, shippersNumber, weight_Quantity} = this.props.invoice
+        const { invoiceNumber, shipper, consignee, rate, charge, driver, date, dateShipped, business, description_Commodity, shippersNumber, weight_Quantity } = this.props.invoice
         console.log("Invoice has been selected:", this.props.invoice)
         return (
             <div className="container">
@@ -22,43 +22,69 @@ class SelectedInvoice extends Component {
                     <CardHeader tag="h3">Invoice No: {invoiceNumber} </CardHeader>
                     <CardBody >
                         <Row>
-                            <Col>
+                            <Col md={8}>
                                 <CardTitle>Company: {business} </CardTitle>
 
                             </Col>
-                            <Col>
+                            <Col md={4}>
+                                <CardTitle>Date: {date} </CardTitle>
 
-                                <CardTitle>Driver: {driver} </CardTitle>
                             </Col>
                         </Row>
-                        <br/>
+                        <hr />
+                        <br />
                         <Row>
                             <Col>
+                                <CardTitle>Driver: {driver} </CardTitle>
+
                                 <CardTitle>Shipper: {shipper} </CardTitle>
 
                             </Col>
                         </Row>
-                        <br/>
+                        <br />
                         <Row>
                             <Col>
                                 <CardTitle>Consignee: {consignee} </CardTitle>
 
+                            </Col>
+                        </Row>
+                        <hr />
+                        <br />
+                        <Row>
+                            <Col>
+                                <CardTitle>Date Shipped: {dateShipped} </CardTitle>
+
+                            </Col>
+                            <Col>
+                                <CardTitle>Rate: ${rate} </CardTitle>
+
+                            </Col>
+                            <Col>
+                                <CardTitle>Charges: ${charge} </CardTitle>
 
                             </Col>
                         </Row>
-                        <br/>
-                        <CardTitle>Date Shipped: {dateShipped} </CardTitle>
-
-                        <CardTitle>Date: {date} </CardTitle>
-                        <CardTitle>Rate: ${rate} </CardTitle>
-                        <CardTitle>Charges: ${charge} </CardTitle>
-
-
+                        <hr />
+                        <Row>
+                            <Col>
+                                <CardTitle> Description: {description_Commodity}</CardTitle>
+                            </Col>
+                        </Row>
+                        <hr />
                     </CardBody>
+                 
                     <CardBody>
-                        <CardTitle> Description: {description_Commodity}</CardTitle>
+                        <Row>
+                            <Col>
+                                <Button>Edit</Button>
+                            </Col>
+                            <Col>
+                                <Button>Delete</Button>
+
+                            </Col>
+                        </Row>
+
                     </CardBody>
-                        <Button>Go somewhere</Button>
                     <CardFooter className="text-muted">Footer</CardFooter>
                 </Card>
             </div>
