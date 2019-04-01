@@ -17,14 +17,14 @@ class SelectedInvoice extends Component {
         console.log("Invoice has been selected:", this.props.invoice)
         return (
             <div className="container">
-                
+
 
                 <Card body outline color="secondary">
                     <CardHeader tag="h3">Invoice No: {invoiceNumber} </CardHeader>
                     <CardBody>
                         <Row>
                             <Col md={6}>
-                                <CardTitle>Company: {business} </CardTitle>
+                                <CardTitle tag="h4">Company: {business} </CardTitle>
 
                             </Col>
                             <Col md={6}>
@@ -33,30 +33,32 @@ class SelectedInvoice extends Component {
 
                             </Col>
                         </Row>
-                       <hr />
-                       
+                        <hr />
+
                         <Row>
                             <Col>
-                                
-                                <CardTitle>Driver: {driver} </CardTitle>
 
-                                <CardTitle>Shipper: {shipper} </CardTitle>
+                                <CardTitle>Driver: {driver} </CardTitle>
+                                <CardTitle>Shippers No: {shippersNumber}</CardTitle>
 
                             </Col>
                         </Row>
                         <br />
+                        <hr />
                         <Row>
                             <Col>
-                                <CardTitle>Consignee: {consignee} </CardTitle>
+                                <CardTitle tag="h4"><b>Shipper:</b></CardTitle>
+                                <CardText>  {shipper} </CardText>
 
+                                <CardTitle tag="h4"><b>Consignee: </b></CardTitle>
+                                <CardText>{consignee}</CardText>
                             </Col>
                         </Row>
                         <hr />
                         <br />
                         <Row>
                             <Col>
-                                <CardTitle>Date Shipped: {dateShipped} </CardTitle>
-
+                                <CardTitle>Weight: {weight_Quantity}</CardTitle>
                             </Col>
                             <Col>
                                 <CardTitle>Rate: ${rate} </CardTitle>
@@ -70,12 +72,14 @@ class SelectedInvoice extends Component {
                         <hr />
                         <Row>
                             <Col>
+                                <CardTitle>Date Shipped: {dateShipped} </CardTitle>
+
                                 <CardTitle> Description: {description_Commodity}</CardTitle>
                             </Col>
                         </Row>
                         <hr />
                     </CardBody>
-                 
+
                     <CardBody>
                         <Row>
                             <Col>
