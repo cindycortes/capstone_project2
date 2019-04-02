@@ -23,9 +23,9 @@ class SelectedInvoice extends Component {
         console.log("props in edit Button", this.props)
         const invoiceDate = moment(date).format('MM-DD-YYYY')
         const shippedDate = moment(dateShipped).format('MM-DD-YYYY')
-      
 
-        
+
+
         var driverName = this.props.drivers && driverId ? this.props.drivers.find(function (driverName) {
             return driverName.id === driverId
         }).name : ""
@@ -33,7 +33,7 @@ class SelectedInvoice extends Component {
         var businessName = this.props.business && businessId ? this.props.business.find(function (businessName) {
             return businessName.id == businessId
         }).businessName : ""
-        
+
         var businessAddress = this.props.business && businessId ? this.props.business.find(function (businessAddress) {
             return businessAddress.id == businessId
         }).businessAddress : ""
@@ -57,10 +57,10 @@ class SelectedInvoice extends Component {
                             </Col>
                             <Col md={6}>
                                 <Row>
-                                    <Col md={6}>
+                                    <Col md={7}>
                                         <CardText tag="h4"> Invoice No: </CardText>
                                     </Col>
-                                    <Col md={6}>
+                                    <Col md={5}>
                                         <CardText tag="h6">{invoiceNumber}</CardText>
                                     </Col>
 
@@ -85,17 +85,18 @@ class SelectedInvoice extends Component {
                         <Row>
                             <Col md={6}>
                                 <Row>
-                                    <Col>
-                                        <CardTitle tag="h4">Driver: {driverName}  </CardTitle>
+                                    <Col md={6}>
 
+                                        <CardTitle tag="h4">Driver:  </CardTitle>
                                     </Col>
-                                    <Col md={2}>
-                                        <span></span>
+                                    <Col md={4}>
+                                        <CardText tag="h5">{driverName}</CardText>
                                     </Col>
+
                                 </Row>
                             </Col>
 
-
+                            
                             <Col md={6}>
                                 <Row>
                                     <Col md={6}>
@@ -103,23 +104,26 @@ class SelectedInvoice extends Component {
 
                                     </Col>
                                     <Col md={4}>
-                                        <span>{shippersNumbers}</span>
+                                        <CardText tag="h5">{shippersNumbers}</CardText>
                                     </Col>
                                 </Row>
 
                             </Col>
                         </Row>
                         <br />
+                        <br />
                         <hr />
                         <Row>
-                            <Col>
+                            <Col md={6}>
                                 <CardTitle tag="h4">Shipper:</CardTitle>
                                 <CardText>  {shipper} </CardText>
-
+                            </Col>
+                            <Col md={6}>
                                 <CardTitle tag="h4">Consignee:</CardTitle>
                                 <CardText>{consignee}</CardText>
                             </Col>
                         </Row>
+                        <br />
                         <hr />
                         <br />
                         <Row>
@@ -165,7 +169,7 @@ class SelectedInvoice extends Component {
                     </CardBody>
                     <CardFooter className="text-muted">CC Trucking Co.</CardFooter>
                 </Card>
-            </div>
+            </div >
         )
     }
 }

@@ -22,7 +22,7 @@ class SearchBar extends Component {
 
                         <Col>
                             <FormGroup>
-                                <Label for="search">Search</Label>
+                                <Label for="search">Find Invoice</Label>
                                 <Input
                                     onChange={this.handleChange}
                                     type={this.props.type === "name" ? "search" : "number"}
@@ -37,7 +37,7 @@ class SearchBar extends Component {
 
                         <Col>
                             <FormGroup>
-                                <Label for="exampleSelect">Select</Label>
+                                <Label for="exampleSelect">Filter by: </Label>
                                 <Input onChange={this.handleChange} type="select" name="type" id="select" >
                                     <option value="invoiceNumber">Invoice No.</option>
                                     <option value="date"> Date</option>
