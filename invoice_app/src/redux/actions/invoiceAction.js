@@ -65,8 +65,8 @@ export const selectInvoice = id => dispatch => {
 
 }
 
-export const editInvoice = (id, invoiceEditForm) => dispatch => {
-    console.log('edit INvoice function values:', invoiceEditForm)
+export const editInvoice = (id, values) => dispatch => {
+    console.log('edit INvoice function values:', values)
     dispatch({
         type: EDIT_INVOICE_PENDING
     })
