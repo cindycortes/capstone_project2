@@ -14,13 +14,45 @@ class SelectedInvoice extends Component {
     render() {
 
 
-        const { invoiceNumber, shipper, consignee, rate, charges, driver, date, dateShipped, business, description_Commodity, shippersNumbers, weight_Quantity, id } = this.props.invoice
-        console.log("Invoice has been selected:", this.props.invoice)
+        const { invoiceNumber, shipper, consignee, rate, charges, driverId, date, dateShipped, business, description_Commodity, shippersNumbers, weight_Quantity, id } = this.props.invoice
+        // console.log("Invoice has been selected:", this.props.invoice)
+        console.log("businessList from selected Invoice:", this.props.business)
+        console.log("DriversList from selected Invoice:", this.props.drivers)
 
 
         console.log("props in edit Button", this.props)
         const invoiceDate = moment(date).format('MM-DD-YYYY')
         const shippedDate = moment(dateShipped).format('MM-DD-YYYY')
+        // const driverName2 = driverName.name
+
+        
+        const driverName = driversArr.find(function (driver) {
+            return driver.id === driverId
+        })
+
+        // const driverName2 = Object.values(driverName)
+     
+
+        //     const drivName = driverName.find(function(dr) {
+        //         return 
+        //     })
+        //     console.log(driverName)
+
+        //    const driverResult = driverName
+
+        // const driverName = this.props.drivers.find((driver) => {
+        //     return driver.id === driverId
+        // })
+        // console.log("driverName", driverName)
+
+
+        // const businessName = props.business.map((bus) => {
+        //     return (
+        //         <option key={bus.id} value={bus.id}>{bus.businessName}
+
+        //         </option>
+        //     )
+        // })
 
 
         return (
@@ -69,11 +101,11 @@ class SelectedInvoice extends Component {
                             <Col md={6}>
                                 <Row>
                                     <Col>
-                                        <CardTitle tag="h4">Driver: {driver} </CardTitle>
+                                        <CardTitle tag="h4">Driver:  </CardTitle>
 
                                     </Col>
                                     <Col md={2}>
-                                        <span>{driver}</span>
+                                        <span></span>
                                     </Col>
                                 </Row>
                             </Col>
@@ -155,7 +187,9 @@ class SelectedInvoice extends Component {
 
 const mapStateToProps = state => {
     return {
-        invoice: state.invoices.invoiceSelected
+        invoice: state.invoices.invoiceSelected,
+        business: state.businesses.businessList,
+        drivers: state.drivers.driversList
 
     }
 }

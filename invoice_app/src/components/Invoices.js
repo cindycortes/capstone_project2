@@ -8,6 +8,8 @@ import Pagination from './Pagination';
 import SearchBar from './SearchBar';
 import ModalButton from '../components/toggle/ModalButton';
 import SelectedInvoice from './invoices/SelectedInvoice';
+import {fetchBusinesses} from '../redux/actions/businessesAction'
+import {fetchDrivers} from '../redux/actions/driversAction';
 
 class Invoices extends Component {
 
@@ -15,11 +17,16 @@ class Invoices extends Component {
         this.props.fetchInvoices();
     }
 
+    componentDidMount() {
+        this.props.fetchBusinesses();
+        this.props.fetchDrivers()
+    }
+
 
 
     renderList() {
         // console.log('props in invoices:', this.props);
-      
+
         return this.props.invoices.map((invoice) => {
 
             return (
@@ -31,13 +38,13 @@ class Invoices extends Component {
                     <td> {invoice.consignee}</td>
                     <td>
                         <Button color="primary" onClick={() => this.props.selectInvoice(invoice.id)}> Select </Button>
-                        <Button padding="10px"color="danger" onClick={() => this.props.deleteInvoice(invoice.id)}>Delete</Button>
+                        <Button padding="10px" color="danger" onClick={() => this.props.deleteInvoice(invoice.id)}>Delete</Button>
                         {/* <ModalButton /> */}
                         {/* <br/> */}
-                        
+
                     </td>
 
-                    
+
                 </tr>
             )
         });
@@ -49,22 +56,22 @@ class Invoices extends Component {
 
         return (
             <div>
-                
+
                 <Row>
                     <Col md={1}></Col>
                     <Col>
                         <div className="container">
                             <Row>
-                                <br/>
+                                <br />
                             </Row>
                             <Row>
                                 <Col>
-                                
+
                                     <Button href="/invoice/new" className="btn btn-primary btn-lg" color="success">Add Invoice</Button>
                                 </Col>
 
                             </Row>
-                            <br/>
+                            <br />
                             <SearchBar />
                             <Table>
                                 <thead>
@@ -78,11 +85,11 @@ class Invoices extends Component {
                                 </thead>
                                 <tbody>
                                     {this.renderList()}
-                                   
+
 
                                 </tbody>
                             </Table>
-                           
+
                         </div>
                     </Col>
 
@@ -91,14 +98,14 @@ class Invoices extends Component {
                             <Row>
                                 {/* <h3>Invoice Item</h3> */}
                             </Row>
-                            <br/>
-                            <br/>
+                            <br />
+                            <br />
 
                             <Row>
                                 <Col md={1}></Col>
                                 <Col md={9}>
                                     <SelectedInvoice />
-                                
+
                                 </Col>
                                 <Col md={2}></Col>
 
@@ -133,4 +140,4 @@ const mapStateToProps = function (state) {
 
 
 
-export default connect(mapStateToProps, { fetchInvoices, selectInvoice, deleteInvoice })(Invoices);
+export default connect(mapStateToProps, { fetchInvoices, selectInvoice, deleteInvoice, fetchBusinesses, fetchDrivers })(Invoices);

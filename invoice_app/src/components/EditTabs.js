@@ -38,27 +38,10 @@ export default class Tabs extends React.Component {
               className={classnames({ active: this.state.activeTab === '1' })}
               onClick={() => { this.toggle('1'); }}
             >
-             Create Business/Driver
+             
             </NavLink>
           </NavItem>
-          <NavItem>
-            <NavLink
-            className={classnames({ active: this.state.activeTab === '2' })}
-              onClick={() => { this.toggle('2'); }}
-              
-            >
-            Create Invoice
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              className={classnames({ active: this.state.activeTab === '3' })}
-              onClick={() => { this.toggle('3'); }}
-            >
-              Step 3: 
-            </NavLink>
-            
-          </NavItem>
+          
         </Nav>
         
         
@@ -72,30 +55,7 @@ export default class Tabs extends React.Component {
               </Col>
             </Row>
           </TabPane>
-          <TabPane tabId="2">
-            <br/>
-            <InvoiceToggle />
-          </TabPane>
-          <TabPane tabId="3">
-            <Row>
-              <br/>
-              {/* <Invoices /> */}
-              {/* <Col sm="6">
-                <Card body>
-                  <CardTitle>Special Title Treatment</CardTitle>
-                  <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                  <Button>Go somewhere</Button>
-                </Card>
-              </Col>
-              <Col sm="6">
-                <Card body>
-                  <CardTitle>Special Title Treatment</CardTitle>
-                  <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                  <Button>Go somewhere</Button>
-                </Card>
-              </Col> */}
-            </Row>
-          </TabPane>
+          
         </TabContent>
       </div>
     );

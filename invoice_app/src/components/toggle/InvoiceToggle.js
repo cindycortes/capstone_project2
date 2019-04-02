@@ -12,10 +12,6 @@ class InvoiceToggle extends Component {
     this.props.fetchDrivers()
   }
 
-  
-
-  
-  
   render() {
     return (
       <div>
