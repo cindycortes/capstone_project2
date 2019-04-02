@@ -35,12 +35,10 @@ export default class Example extends React.Component {
                             <NavItem>
                                 <NavLink href="/">Dashboard</NavLink>
                             </NavItem>
-                            <NavItem>
+                            {/* <NavItem>
                                 <NavLink href="/invoice/new">New Invoice</NavLink>
                             </NavItem>
-                            {/* <NavItem>
-                                <NavLink href="/invoice/:id/edit">Edit Invoice</NavLink>
-                            </NavItem> */}
+                           
                             <NavItem>
                                 <NavLink href="/login">Login</NavLink>
                             </NavItem>
@@ -49,7 +47,7 @@ export default class Example extends React.Component {
                             </NavItem>
                             <NavItem>
                                 <NavLink href="/wizard">Wizard</NavLink>
-                            </NavItem>
+                            </NavItem> */}
                             <NavItem>
                                 <NavLink href="https://github.com/cindycortes/capstone_project.git">GitHub</NavLink>
                             </NavItem>
