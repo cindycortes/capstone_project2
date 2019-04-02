@@ -12,6 +12,7 @@ let InvoiceEdit = props => {
 
 
     function submitEditInvoice(values) {
+        alert('You have successfully edit your invoice!')
         console.log("edit values", values);
         props.editInvoice(values.id, values)
     }

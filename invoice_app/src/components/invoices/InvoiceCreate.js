@@ -16,6 +16,7 @@ let InvoiceCreate = props => {
     function submitNewInvoice(values) {
         console.log("values", values);
         props.createInvoice(values)
+        alert('You have added a new invoice!')
     }
 
 
@@ -47,7 +48,7 @@ let InvoiceCreate = props => {
     return (
 
         <Form className="container" onSubmit={handleSubmit(submitNewInvoice)}>
-            <h1>Add New Invoice </h1>
+            <h2>Add New Invoice </h2>
             <Row>
                 <Col md={2}>
                     <FormGroup>

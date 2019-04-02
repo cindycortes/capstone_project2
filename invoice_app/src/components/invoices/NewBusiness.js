@@ -10,12 +10,13 @@ let NewBusiness = props => {
     function submitNewBusiness(values) {
         console.log("business Values", values);
         props.createBusiness(values)
+        alert('You have added a new business')
     }
 
-    const { handleSubmit, submitting } = props;
+    const { handleSubmit, submitting, pristine, reset } = props;
     return (
         <Form className="container" onSubmit={handleSubmit(submitNewBusiness)}>
-            <h1>Add New Business </h1>
+            <h2 style={{textAligned: "center"}}>Add New Business </h2>
             <Row>
                 <Col md={8}>
 
@@ -49,7 +50,9 @@ let NewBusiness = props => {
             </Row>
 
 
-            <button type="submit" className="btn btn-primary btn-lg" disabled={submitting}>Add Business</button>
+            <button type="submit" style={{marginRight:"10px"}} className="btn btn-primary btn-lg" disabled={submitting}>Add Business</button>
+            <button type="button" className="btn btn-secondary btn-lg" disabled={pristine || submitting} onClick={reset}>Clear</button>
+
         </Form>
     )
 }

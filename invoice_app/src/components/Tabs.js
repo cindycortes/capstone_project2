@@ -53,7 +53,7 @@ export default class Tabs extends React.Component {
               className={classnames({ active: this.state.activeTab === '3' })}
               onClick={() => { this.toggle('3'); }}
             >
-              Step 3: 
+             
             </NavLink>
             
           </NavItem>
