@@ -23,7 +23,7 @@ class SelectedInvoice extends Component {
         console.log("props in edit Button", this.props)
         const invoiceDate = moment(date).format('MM-DD-YYYY')
         const shippedDate = moment(dateShipped).format('MM-DD-YYYY')
-        // const driverName2 = driverName.name
+      
 
         
         var driverName = this.props.drivers && driverId ? this.props.drivers.find(function (driverName) {
@@ -37,34 +37,6 @@ class SelectedInvoice extends Component {
         var businessAddress = this.props.business && businessId ? this.props.business.find(function (businessAddress) {
             return businessAddress.id == businessId
         }).businessAddress : ""
-
-
-
-        // const driverFirstName = driverName["name"]
-       
-        // const driverName2 = Object.values(driverName)
-     
-
-        //     const drivName = driverName.find(function(dr) {
-        //         return 
-        //     })
-        //     console.log(driverName)
-
-        //    const driverResult = driverName
-
-        // const driverName = this.props.drivers.find((driver) => {
-        //     return driver.id === driverId
-        // })
-        // console.log("driverName", driverName)
-
-
-        // const businessName = props.business.map((bus) => {
-        //     return (
-        //         <option key={bus.id} value={bus.id}>{bus.businessName}
-
-        //         </option>
-        //     )
-        // })
 
 
         return (
