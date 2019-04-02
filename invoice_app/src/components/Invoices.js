@@ -31,7 +31,7 @@ class Invoices extends Component {
                     <td> {invoice.consignee}</td>
                     <td>
                         <Button color="primary" onClick={() => this.props.selectInvoice(invoice.id)}> Select </Button>
-                        <Button color="danger" onClick={() => this.props.deleteInvoice(invoice.id)}>Delete</Button>
+                        <Button padding="10px"color="danger" onClick={() => this.props.deleteInvoice(invoice.id)}>Delete</Button>
                         {/* <ModalButton /> */}
                         {/* <br/> */}
                         

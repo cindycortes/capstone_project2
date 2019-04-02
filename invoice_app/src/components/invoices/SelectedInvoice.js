@@ -7,17 +7,22 @@ import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { selectInvoice, editInvoice, editButton } from '../../redux/actions/invoiceAction';
 // import { invoiceNumber } from 'react-redux';
+import moment from 'moment';
 
 class SelectedInvoice extends Component {
 
 
     render() {
+        
 
         const { invoiceNumber, shipper, consignee, rate, charges, driver, date, dateShipped, business, description_Commodity, shippersNumber, weight_Quantity, id } = this.props.invoice
         console.log("Invoice has been selected:", this.props.invoice)
 
 
         console.log("props in edit Button", this.props)
+        const invoiceDate = moment(date).format('MM-DD-YYYY')
+        const shippedDate = moment(dateShipped).format('MM-DD-YYYY')
+
 
         return (
             <div className="container">
@@ -32,7 +37,7 @@ class SelectedInvoice extends Component {
 
                             </Col>
                             <Col md={6}>
-                                <CardTitle>Date: {date} </CardTitle>
+                                <CardTitle>Date: {invoiceDate} </CardTitle>
                                 <CardTitle>Invoice #: {invoiceNumber}</CardTitle>
 
                             </Col>
@@ -51,7 +56,7 @@ class SelectedInvoice extends Component {
                         <hr />
                         <Row>
                             <Col>
-                                <CardTitle tag="h4"><b>Shipper:</b></CardTitle>
+                                <CardTitle tag="h4">Shipper:</CardTitle>
                                 <CardText>  {shipper} </CardText>
 
                                 <CardTitle tag="h4"><b>Consignee: </b></CardTitle>
@@ -76,7 +81,7 @@ class SelectedInvoice extends Component {
                         <hr />
                         <Row>
                             <Col>
-                                <CardTitle>Date Shipped: {dateShipped} </CardTitle>
+                                <CardTitle>Date Shipped: {shippedDate} </CardTitle>
 
                                 <CardTitle> Description: {description_Commodity}</CardTitle>
                             </Col>
