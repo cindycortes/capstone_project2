@@ -20,8 +20,8 @@ let InvoiceCreate = props => {
 
 
     const { handleSubmit, submitting } = props;
-    console.log("businessList from invoice create:", props.business)
-    console.log("driversList from invoice create:", props.drivers)
+    // console.log("businessList from invoice create:", props.business)
+    // console.log("driversList from invoice create:", props.drivers)
 
 
     const businessList = props.business.map((bus) => {

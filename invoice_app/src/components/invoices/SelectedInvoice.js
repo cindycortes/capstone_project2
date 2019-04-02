@@ -26,10 +26,12 @@ class SelectedInvoice extends Component {
         // const driverName2 = driverName.name
 
         
-        const driverName = driversArr.find(function (driver) {
-            return driver.id === driverId
+        var driverName = this.props.drivers.find(function (driverName) {
+            return driverName.id === driverId
+            console.log(driverName.name)
         })
-
+        // const driverFirstName = driverName["name"]
+       
         // const driverName2 = Object.values(driverName)
      
 
