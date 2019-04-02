@@ -3,6 +3,8 @@ import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { editInvoice, selectInvoice } from '../../redux/actions/invoiceAction';
 import { Form, FormGroup, Label, Row, Col } from 'reactstrap';
+import {fetchBusinesses} from '../../redux/actions/businessesAction';
+import {fetchDrivers} from '../../redux/actions/driversAction';
 
 
 
@@ -13,7 +15,30 @@ let InvoiceEdit = props => {
         console.log("edit values", values);
         props.editInvoice(values.id, values)
     }
+    
+    console.log("businessList from InvoiceEdit:", props.business)
+    console.log("driversList from InvoiceEdit:", props.drivers)
 
+
+    const businessList = props.business.map((bus) => {
+        return (
+            <option key={bus.id} value={bus.id}>{bus.businessName}
+
+            </option>
+        )
+    })
+
+    const shippersList = props.business.map((bus) => {
+        return (
+            <option key={bus.id} value={bus.businessName}>{bus.businessName}</option>
+        )
+    })
+
+    const driversList = props.drivers.map((driver) => {
+        return (
+            <option key={driver.id} value={driver.id}>{driver.name}</option>
+        )
+    })
 
    
     const { businessId, invoiceNumber, date, dateShipped, driver, shippersNumbers, description_Commodity, weight_Quantity, charges, shipper, consignee, rate, userId } = props.initialValues;
@@ -47,9 +72,10 @@ let InvoiceEdit = props => {
                         <FormGroup>
                             <Label for="businessId">Business Name</Label>
                             <Field className="form-control" name="businessId" component="select" placeholder="Business Name">
-                                <option></option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
+                                <option>Select</option>
+                                {businessList}
+                                {/* <option value="1">1</option>
+                                <option value="2">2</option> */}
                             </Field>
                         </FormGroup>
                     </Col>
@@ -153,10 +179,10 @@ let InvoiceEdit = props => {
 
 //initial values
 const mapStateToProps = (state, props) => {
-    console.log("invoice edit mstp", state)
+    console.log("invoice edit mstp", state, props)
     return {
-        
-
+        business: state.businesses.businessList,
+        drivers: state.drivers.driversList,
         initialValues: state.invoices.invoiceSelected
     }
 }
@@ -167,6 +193,6 @@ InvoiceEdit = reduxForm({
 
 })(InvoiceEdit)
 
-export default connect(mapStateToProps, { editInvoice, selectInvoice })(InvoiceEdit)
+export default connect(mapStateToProps, { editInvoice, selectInvoice, fetchBusinesses })(InvoiceEdit)
 // export default InvoiceEdit
 
