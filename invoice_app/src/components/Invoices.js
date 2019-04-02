@@ -8,8 +8,8 @@ import Pagination from './Pagination';
 import SearchBar from './SearchBar';
 import ModalButton from '../components/toggle/ModalButton';
 import SelectedInvoice from './invoices/SelectedInvoice';
-import {fetchBusinesses} from '../redux/actions/businessesAction'
-import {fetchDrivers} from '../redux/actions/driversAction';
+import { fetchBusinesses } from '../redux/actions/businessesAction'
+import { fetchDrivers } from '../redux/actions/driversAction';
 
 class Invoices extends Component {
 
@@ -37,8 +37,8 @@ class Invoices extends Component {
                     <td> {invoice.shipper}</td>
                     <td> {invoice.consignee}</td>
                     <td>
-                        <Button color="primary" onClick={() => this.props.selectInvoice(invoice.id)}> Select </Button>
-                        <Button padding="10px" color="danger" onClick={() => this.props.deleteInvoice(invoice.id)}>Delete</Button>
+                        <Button style={{marginRight: '15px'}} color="primary" onClick={() => this.props.selectInvoice(invoice.id)}> Select </Button>
+                        <Button color="danger" onClick={() => this.props.deleteInvoice(invoice.id)}>Delete</Button>
                         {/* <ModalButton /> */}
                         {/* <br/> */}
 
@@ -53,7 +53,7 @@ class Invoices extends Component {
 
     render() {
 
-
+        
         return (
             <div>
 

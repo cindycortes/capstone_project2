@@ -14,7 +14,7 @@ class SelectedInvoice extends Component {
     render() {
 
 
-        const { invoiceNumber, shipper, consignee, rate, charges, driverId, date, dateShipped, business, description_Commodity, shippersNumbers, weight_Quantity, id } = this.props.invoice
+        const { invoiceNumber, shipper, consignee, rate, charges, driverId, date, dateShipped, businessId, description_Commodity, shippersNumbers, weight_Quantity, id } = this.props.invoice
         // console.log("Invoice has been selected:", this.props.invoice)
         console.log("businessList from selected Invoice:", this.props.business)
         console.log("DriversList from selected Invoice:", this.props.drivers)
@@ -26,10 +26,20 @@ class SelectedInvoice extends Component {
         // const driverName2 = driverName.name
 
         
-        var driverName = this.props.drivers.find(function (driverName) {
+        var driverName = this.props.drivers && driverId ? this.props.drivers.find(function (driverName) {
             return driverName.id === driverId
-            console.log(driverName.name)
-        })
+        }).name : ""
+
+        var businessName = this.props.business && businessId ? this.props.business.find(function (businessName) {
+            return businessName.id == businessId
+        }).businessName : ""
+        
+        var businessAddress = this.props.business && businessId ? this.props.business.find(function (businessAddress) {
+            return businessAddress.id == businessId
+        }).businessAddress : ""
+
+
+
         // const driverFirstName = driverName["name"]
        
         // const driverName2 = Object.values(driverName)
@@ -66,11 +76,12 @@ class SelectedInvoice extends Component {
                     <CardBody>
                         <Row>
                             <Col md={6}>
-                                <CardTitle tag="h4">Business:{business} </CardTitle>
-                                <CardText>{business}</CardText>
-                                <span>CC Trucking</span><br />
+                                <CardTitle tag="h4">Business:</CardTitle>
+                                <CardText>{businessName}</CardText>
+                                <CardText>{businessAddress}</CardText>
+                                {/* <span>CC Trucking</span><br />
                                 <span>123 ABC St. Phoenix, AZ 85041</span><br />
-                                <span>123-123-1234</span>
+                                <span>123-123-1234</span> */}
                             </Col>
                             <Col md={6}>
                                 <Row>
@@ -103,7 +114,7 @@ class SelectedInvoice extends Component {
                             <Col md={6}>
                                 <Row>
                                     <Col>
-                                        <CardTitle tag="h4">Driver:  </CardTitle>
+                                        <CardTitle tag="h4">Driver: {driverName}  </CardTitle>
 
                                     </Col>
                                     <Col md={2}>
@@ -116,7 +127,7 @@ class SelectedInvoice extends Component {
                             <Col md={6}>
                                 <Row>
                                     <Col md={6}>
-                                        <CardTitle tag="h4">Shippers No: </CardTitle>
+                                        <CardTitle tag="h5">Shippers No: </CardTitle>
 
                                     </Col>
                                     <Col md={4}>
