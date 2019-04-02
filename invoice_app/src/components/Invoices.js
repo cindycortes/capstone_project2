@@ -82,7 +82,7 @@ class Invoices extends Component {
 
                                 </tbody>
                             </Table>
-                            {/* <Pagination /> */}
+                           
                         </div>
                     </Col>
 
@@ -95,8 +95,8 @@ class Invoices extends Component {
                             <br/>
 
                             <Row>
-                                <Col md={2}></Col>
-                                <Col md={8}>
+                                <Col md={1}></Col>
+                                <Col md={9}>
                                     <SelectedInvoice />
                                 
                                 </Col>

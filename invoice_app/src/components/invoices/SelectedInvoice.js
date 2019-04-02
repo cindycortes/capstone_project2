@@ -48,13 +48,13 @@ class SelectedInvoice extends Component {
                                     </Col>
 
                                 </Row>
-                                <br/>
+                                <br />
                                 <Row>
                                     <Col>
                                         <CardTitle tag="h4">Date:</CardTitle>
                                     </Col>
                                     <Col>
-                                    
+
                                         <span>{invoiceDate}</span>
                                     </Col>
 
@@ -107,23 +107,28 @@ class SelectedInvoice extends Component {
                         <br />
                         <Row>
                             <Col>
-                                <CardTitle tag="h4">Weight: {weight_Quantity}</CardTitle>
+                                <CardTitle tag="h4">Weight: </CardTitle>
+                                <CardText >{weight_Quantity}</CardText>
                             </Col>
                             <Col>
-                                <CardTitle tag="h4">Rate: ${rate} </CardTitle>
+                                <CardTitle tag="h4">Rate:  </CardTitle>
+                                <CardText>${rate}</CardText>
 
                             </Col>
                             <Col>
-                                <CardTitle>Charges: ${charges} </CardTitle>
+                                <CardTitle tag="h4">Charges: </CardTitle>
+                                <CardText>${charges}</CardText>
 
                             </Col>
                         </Row>
                         <hr />
                         <Row>
                             <Col>
-                                <CardTitle tag="h4">Date Shipped: {shippedDate} </CardTitle>
+                                <CardTitle tag="h4">Date Shipped:</CardTitle>
+                                <CardText>{shippedDate}</CardText>
 
-                                <CardTitle tag="h4"> Description: {description_Commodity}</CardTitle>
+                                <CardTitle tag="h4"> Description: </CardTitle>
+                                <CardText>{description_Commodity}</CardText>
                             </Col>
                         </Row>
                         <hr />
