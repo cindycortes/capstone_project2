@@ -3,19 +3,18 @@ import {
     Card, Button, CardHeader, CardFooter, CardBody,
     CardTitle, CardText, Row, Col
 } from 'reactstrap';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { selectInvoice, editInvoice, editButton } from '../../redux/actions/invoiceAction';
-// import { invoiceNumber } from 'react-redux';
 import moment from 'moment';
 
 class SelectedInvoice extends Component {
 
 
     render() {
-        
 
-        const { invoiceNumber, shipper, consignee, rate, charges, driver, date, dateShipped, business, description_Commodity, shippersNumber, weight_Quantity, id } = this.props.invoice
+
+        const { invoiceNumber, shipper, consignee, rate, charges, driver, date, dateShipped, business, description_Commodity, shippersNumbers, weight_Quantity, id } = this.props.invoice
         console.log("Invoice has been selected:", this.props.invoice)
 
 
@@ -33,22 +32,63 @@ class SelectedInvoice extends Component {
                     <CardBody>
                         <Row>
                             <Col md={6}>
-                                <CardTitle tag="h4">Company: {business} </CardTitle>
-
+                                <CardTitle tag="h4">Business:{business} </CardTitle>
+                                <CardText>{business}</CardText>
+                                <span>CC Trucking</span><br />
+                                <span>123 ABC St. Phoenix, AZ 85041</span><br />
+                                <span>123-123-1234</span>
                             </Col>
                             <Col md={6}>
-                                <CardTitle>Date: {invoiceDate} </CardTitle>
-                                <CardTitle>Invoice #: {invoiceNumber}</CardTitle>
+                                <Row>
+                                    <Col md={6}>
+                                        <CardText tag="h4"> Invoice No: </CardText>
+                                    </Col>
+                                    <Col md={6}>
+                                        <CardText tag="h6">{invoiceNumber}</CardText>
+                                    </Col>
+
+                                </Row>
+                                <br/>
+                                <Row>
+                                    <Col>
+                                        <CardTitle tag="h4">Date:</CardTitle>
+                                    </Col>
+                                    <Col>
+                                    
+                                        <span>{invoiceDate}</span>
+                                    </Col>
+
+                                </Row>
+
 
                             </Col>
                         </Row>
                         <hr />
 
                         <Row>
-                            <Col>
+                            <Col md={6}>
+                                <Row>
+                                    <Col>
+                                        <CardTitle tag="h4">Driver: {driver} </CardTitle>
 
-                                <CardTitle>Driver: {driver} </CardTitle>
-                                <CardTitle>Shippers No: {shippersNumber}</CardTitle>
+                                    </Col>
+                                    <Col md={2}>
+                                        <span>{driver}</span>
+                                    </Col>
+                                </Row>
+                            </Col>
+
+
+                            <Col md={6}>
+                                <Row>
+                                    <Col md={6}>
+                                        <CardTitle tag="h4">Shippers No: </CardTitle>
+
+                                    </Col>
+                                    <Col md={4}>
+                                        <span>{shippersNumbers}</span>
+                                    </Col>
+                                </Row>
 
                             </Col>
                         </Row>
@@ -59,7 +99,7 @@ class SelectedInvoice extends Component {
                                 <CardTitle tag="h4">Shipper:</CardTitle>
                                 <CardText>  {shipper} </CardText>
 
-                                <CardTitle tag="h4"><b>Consignee: </b></CardTitle>
+                                <CardTitle tag="h4">Consignee:</CardTitle>
                                 <CardText>{consignee}</CardText>
                             </Col>
                         </Row>
@@ -67,10 +107,10 @@ class SelectedInvoice extends Component {
                         <br />
                         <Row>
                             <Col>
-                                <CardTitle>Weight: {weight_Quantity}</CardTitle>
+                                <CardTitle tag="h4">Weight: {weight_Quantity}</CardTitle>
                             </Col>
                             <Col>
-                                <CardTitle>Rate: ${rate} </CardTitle>
+                                <CardTitle tag="h4">Rate: ${rate} </CardTitle>
 
                             </Col>
                             <Col>
@@ -81,9 +121,9 @@ class SelectedInvoice extends Component {
                         <hr />
                         <Row>
                             <Col>
-                                <CardTitle>Date Shipped: {shippedDate} </CardTitle>
+                                <CardTitle tag="h4">Date Shipped: {shippedDate} </CardTitle>
 
-                                <CardTitle> Description: {description_Commodity}</CardTitle>
+                                <CardTitle tag="h4"> Description: {description_Commodity}</CardTitle>
                             </Col>
                         </Row>
                         <hr />
