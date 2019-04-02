@@ -5,7 +5,9 @@ import {
     FILTER_INVOICES,
     INVOICE_SELECTED,
     CREATE_INVOICE,
-    EDIT_INVOICE,
+    EDIT_INVOICE_SUCCESS,
+    EDIT_INVOICE_PENDING,
+    EDIT_INVOICE_FAILED,
     EDIT_BUTTON,
     DELETE_INVOICE_FAILED,
     DELETE_INVOICE_PENDING,
@@ -63,18 +65,25 @@ export const selectInvoice = id => dispatch => {
 
 }
 
-export const editInvoice = (id, formValues) => dispatch => {
-    console.log('you are currently viewing edit id:', id)
-    axios.put(`http://localhost:5000/api/invoices/${id}`, formValues)
+export const editInvoice = (id, invoiceEditForm) => dispatch => {
+    console.log('edit INvoice function values:', invoiceEditForm)
+    dispatch({
+        type: EDIT_INVOICE_PENDING
+    })
+    axios.put(`http://localhost:5000/api/invoices/${id}`, values)
 
         .then(response => {
             dispatch({
-                type: EDIT_INVOICE,
+                type: EDIT_INVOICE_SUCCESS,
                 payload: response.data
 
             })
         })
         .catch(err => {
+            dispatch({
+                type: EDIT_INVOICE_FAILED,
+                payload: "error in submitting edit form", err
+            })
             console.log(err)
         })
 }

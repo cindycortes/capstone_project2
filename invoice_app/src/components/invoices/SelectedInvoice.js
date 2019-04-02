@@ -11,24 +11,13 @@ import { selectInvoice, editInvoice, editButton } from '../../redux/actions/invo
 class SelectedInvoice extends Component {
 
 
-    // renderToEdit() {
-    //     console.log("clicked on Edit Button", this.props.editButton)
-    //     // this.props.editButton();
-    // }
-
     render() {
 
         const { invoiceNumber, shipper, consignee, rate, charges, driver, date, dateShipped, business, description_Commodity, shippersNumber, weight_Quantity, id } = this.props.invoice
         console.log("Invoice has been selected:", this.props.invoice)
 
 
-
-        // const {handleSubmit} = props;
-
         console.log("props in edit Button", this.props)
-
-
-     
 
         return (
             <div className="container">

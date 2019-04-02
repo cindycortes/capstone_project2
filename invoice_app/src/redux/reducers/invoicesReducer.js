@@ -6,11 +6,13 @@ import {
     FILTER_INVOICES,
     INVOICE_SELECTED,
     CREATE_INVOICE,
-    EDIT_INVOICE,
+    EDIT_INVOICE_SUCCESS,
     EDIT_BUTTON,
     DELETE_INVOICE_FAILED,
     DELETE_INVOICE_PENDING,
-    DELETE_INVOICE_SUCCESS
+    DELETE_INVOICE_SUCCESS,
+    EDIT_INVOICE_PENDING,
+    EDIT_INVOICE_FAILED
 
 } from '../actions/types';
 
@@ -18,7 +20,7 @@ import {
 const initialState = {
     invoiceList: [],
     invoiceSelected: [],
-    invoiceEdit:[],
+    invoiceEdit:{},
     
     invoice: {}, // single invoice that we add
     fetchingInvoices: false,
@@ -67,12 +69,21 @@ export default function (state = initialState, action) {
                 invoice: action.payload
             };
 
-        case EDIT_INVOICE:
-            // return { ...state, [action.payload.id]: action.payload }; //key interpolation syntax
+        case EDIT_INVOICE_SUCCESS:
             return {
                 ...state,
-                invoiceEdit: action.payload
+                invoiceEditForm: action.payload
             }
+        case EDIT_INVOICE_PENDING: 
+            return {
+                ...state,
+                invoiceEditForm: action.payload
+            } 
+        case EDIT_INVOICE_FAILED:
+            return {
+                ...state,
+            invoiceEditForm: action.payload
+            }    
         case EDIT_BUTTON:
             return {
                 ...state,
