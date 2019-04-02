@@ -14,6 +14,7 @@ import CreateDashboard from './components/invoices/CreateDashboard'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import WizardForm from './components/invoiceWizard/WizardForm';
+import EditDashboard from './components/invoices/EditDashboard';
 
 
 
@@ -29,7 +30,7 @@ class App extends Component {
           <Route exact path="/" component={Dashboard} />
           {/* <Route path="/invoice/new" component={InvoiceCreate} /> */}
           <Route path="/invoice/new" component={CreateDashboard} />
-          <Route path="/invoice/:id/edit" component={InvoiceEdit} />
+          <Route path="/invoice/:id/edit" component={EditDashboard} />
           <Route path="/login" component={Login} />
           <Route path="/wizard" component={WizardForm} />
 
