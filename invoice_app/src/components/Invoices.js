@@ -51,6 +51,7 @@ class Invoices extends Component {
             <div>
                 
                 <Row>
+                    <Col md={1}></Col>
                     <Col>
                         <div className="container">
                             <Row>
